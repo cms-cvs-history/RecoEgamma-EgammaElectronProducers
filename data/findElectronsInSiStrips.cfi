@@ -1,9 +1,9 @@
   module findElectronsInSiStrips = SiStripElectronProducer {
-    string siHitProducer = "LocalMeasurementConverter"
+    string siHitProducer = "SiStripRecHits2D"
     string siRphiHitCollection = "rphiRecHit"
     string siStereoHitCollection = "stereoRecHit"
-    string superClusterProducer = "islandSuperClusterProducer"
-    string superClusterCollection = "islandBarrelSuperClusterCollection"
+    string superClusterProducer = "correctedHybridSuperClusterProducer"
+    string superClusterCollection = ""
     string siStripElectronsLabel = ""
     string trackCandidatesLabel = ""
 
