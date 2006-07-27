@@ -1,6 +1,0 @@
-#
-# electron producer
-include "RecoEgamma/EgammaElectronProducers/data/electrons.cfi"
-
-
-sequence electronSequence = { electrons }
