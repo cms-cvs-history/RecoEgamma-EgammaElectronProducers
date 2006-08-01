@@ -1,5 +1,5 @@
   module findElectronsInSiStrips = SiStripElectronProducer {
-    string siHitProducer = "siStripMatchedRecHits"
+    string siHitProducer = "SiStripRecHits2D"
     string siRphiHitCollection = "rphiRecHit"
     string siStereoHitCollection = "stereoRecHit"
     string superClusterProducer = "correctedHybridSuperClusterProducer"
