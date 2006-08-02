@@ -1,4 +1,4 @@
-  module findElectronsInSiStrips = SiStripElectronProducer {
+module findSiElectrons = SiStripElectronProducer {
     string siHitProducer = "siStripMatchedRecHits"
     string siRphiHitCollection = "rphiRecHit"
     string siStereoHitCollection = "stereoRecHit"
@@ -6,11 +6,48 @@
     string superClusterCollection = ""
     string siStripElectronsLabel = ""
     string trackCandidatesLabel = ""
-
+    
     int32 maxHitsOnDetId = 4
     double originUncertainty = 15.  # cm
     double phiBandWidth = 0.01      # radians
     double maxNormResid = 10.
     int32 minHits = 5
     double maxReducedChi2 = 10000.  # might not work yet
-  }
+}
+
+# KFUpdatoerESProducer
+include "TrackingTools/KalmanUpdators/data/KFUpdatorESProducer.cfi"
+
+# Chi2MeasurementEstimatorESProducer
+include "TrackingTools/KalmanUpdators/data/Chi2MeasurementEstimatorESProducer.cfi"
+
+# KFTrajectoryFitterESProducer
+include "TrackingTools/TrackFitters/data/KFTrajectoryFitterESProducer.cfi"
+
+# KFTrajectorySmootherESProducer
+include "TrackingTools/TrackFitters/data/KFTrajectorySmootherESProducer.cfi"
+
+# KFFittingSmootherESProducer
+include "TrackingTools/TrackFitters/data/KFFittingSmootherESProducer.cfi"
+
+# PropagatorWithMaterialESProducer
+include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
+
+# PropagatorWithMaterialESProducer
+include "TrackingTools/MaterialEffects/data/OppositeMaterialPropagator.cfi"
+
+#TransientTrackingBuilder
+include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+
+# TrackProducer
+include "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cfi"
+replace ctfWithMaterialTracks.src = "findElectronsInSiStrips"
+
+module associateSiElectronsWithTracks = SiStripElectronAssociator {
+    string siStripElectronProducer = "findElectronsInSiStrips"
+    string siStripElectronCollection = ""
+    string trackProducer = "ctfWithMaterialTracks"
+    string trackCollection = ""
+}
+
+sequence findElectronsInSiStrips = {findSiElectrons, ctfWithMaterialTracks, associateSiElectronsWithTracks}
