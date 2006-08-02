@@ -2,7 +2,7 @@
     string siHitProducer = "siStripMatchedRecHits"
     string siRphiHitCollection = "rphiRecHit"
     string siStereoHitCollection = "stereoRecHit"
-    string superClusterProducer = "correctedHybridSuperClusterProducer"
+    string superClusterProducer = "correctedHybridSuperClusters"
     string superClusterCollection = ""
     string siStripElectronsLabel = ""
     string trackCandidatesLabel = ""

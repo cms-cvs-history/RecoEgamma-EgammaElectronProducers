@@ -1,15 +1,15 @@
 #
 # producer for electrons
-# $Id:$
+# $Id: electrons.cfi,v 1.1 2006/07/14 15:14:37 nancy Exp $
 #
 
 
 module electrons = ElectronProducer {
-  string scHybridBarrelProducer   =     "correctedHybridSuperClusterProducer"
+  string scHybridBarrelProducer   =     "correctedHybridSuperClusters"
   string scBarrelCollection       =     ""
-  string scIslandEndcapProducer   =     "correctedIslandEndcapSuperClusterProducer"	
+  string scIslandEndcapProducer   =     "correctedIslandEndcapSuperClusters"
   string scEndcapCollection       =     ""
-  string electronCollection =       "correctedPhotonCollection"
+  string electronCollection       =     ""
 }
 
 
