@@ -41,10 +41,10 @@ include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder
 
 # TrackProducer
 include "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cfi"
-replace ctfWithMaterialTracks.src = "findElectronsInSiStrips"
+replace ctfWithMaterialTracks.src = "findSiElectrons"
 
 module associateSiElectronsWithTracks = SiStripElectronAssociator {
-    string siStripElectronProducer = "findElectronsInSiStrips"
+    string siStripElectronProducer = "findSiElectrons"
     string siStripElectronCollection = ""
     string trackProducer = "ctfWithMaterialTracks"
     string trackCollection = ""
