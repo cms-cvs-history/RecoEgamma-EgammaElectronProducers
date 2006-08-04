@@ -1,0 +1,41 @@
+#
+# $Id: $
+#
+# complete sequence to 1) make siStripElectrons
+#                      2) do tracking based on these siStripElectrons
+#                      3) associate tracks to SiStripElectrons
+#
+# Created by Shahram Rahatlou, University of Rome & INFN, 4 Aug 2006
+# based on the cfg files from Jim Pivarsky, Cornell
+#
+
+# tracker geometry
+include "Geometry/TrackerGeometryBuilder/data/trackerGeometry.cfi"
+
+# tracker numbering
+include "Geometry/TrackerNumberingBuilder/data/trackerNumberingGeometry.cfi"
+
+# standard geometry
+include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
+
+# magnetic field
+include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
+
+include "RecoLocalTracker/SiStripRecHitConverter/data/StripCPEfromTrackAngle.cfi"
+include "RecoLocalTracker/SiPixelRecHits/data/PixelCPEParmError.cfi"
+
+
+# use super clusters and si strip hits to make siStripElectrons
+include "RecoEgamma/EgammaElectronProducers/data/siStripElectrons.cfi"
+
+# do tracking seeded by siStripElectrons
+include "RecoEgamma/EgammaElectronProducers/data/egammaCTFFinalFitWithMaterial.cff"
+
+# asscoiate tracks to siStripElectrons
+include "RecoEgamma/EgammaElectronProducers/data/siStripElectronToTrackAssociator.cfi"
+
+sequence siStripElectronSequence = {
+                                     siStripElectrons,
+                                     egammaCTFFinalFitWithMaterial,
+                                     siStripElectronToTrackAssociator
+                                   }

@@ -1,6 +1,14 @@
 #
-# electron producer
-include "RecoEgamma/EgammaElectronProducers/data/electrons.cfi"
+#  sequence to make both pixel-based and pixel-less electrons
+#  $Id: $
+#
+# Created by Shahram Rahatlou, University of Rome & INFN, 4 Aug 2006
+#
+# sequence to make pixel-based electrons
+include "RecoEgamma/EgammaElectronProducers/data/pixelMatchElectronSequence.cff"
+
+# sequence to make si-strip based electrons
+include "RecoEgamma/EgammaElectronProducers/data/siStripElectronSequence.cff"
 
 
-sequence electronSequence = { electrons }
+sequence electronSequence = { pixelMatchElectronSequence, siStripElectronSequence }

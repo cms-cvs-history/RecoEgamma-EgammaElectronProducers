@@ -1,0 +1,50 @@
+# KFUpdatoerESProducer
+include "TrackingTools/KalmanUpdators/data/KFUpdatorESProducer.cfi"
+
+# Chi2MeasurementEstimatorESProducer
+include "TrackingTools/KalmanUpdators/data/Chi2MeasurementEstimatorESProducer.cfi"
+
+# KFTrajectoryFitterESProducer
+include "TrackingTools/TrackFitters/data/KFTrajectoryFitterESProducer.cfi"
+
+# KFTrajectorySmootherESProducer
+include "TrackingTools/TrackFitters/data/KFTrajectorySmootherESProducer.cfi"
+
+# KFFittingSmootherESProducer
+include "TrackingTools/TrackFitters/data/KFFittingSmootherESProducer.cfi"
+
+# PropagatorWithMaterialESProducer
+include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
+
+# PropagatorWithMaterialESProducer
+include "TrackingTools/MaterialEffects/data/OppositeMaterialPropagator.cfi"
+
+#TransientTrackingBuilder
+include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+
+# TrackProducer
+# NB: can't use this instance because it will be changed for standard tracking sequence!
+#
+#include "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cfi"
+#replace ctfWithMaterialTracks.src = "siStripElectrons"
+
+#
+#  NB: this is a clear use case where we need the clone method
+#
+#    include "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cfi"
+#    module egammaCTFFinalFitWithMaterial = clone ctfWithMaterialTracks
+#    replace egammaCTFFinalFitWithMaterial.src = "siStripElectrons"
+#
+# egammaCTFFinalFitWithMaterial has the same state of ctfWithMaterialTracks
+#
+
+# make a local instance until clone is implemented
+#
+module egammaCTFFinalFitWithMaterial = TrackProducer {
+  string src               = "siStripElectrons"
+  string Fitter            = "KFFittingSmoother"
+  string Propagator        = "PropagatorWithMaterial"
+  string alias             = "egammaCTFWithMaterialTracks"
+  string TTRHBuilder       =   "WithTrackAngle"
+
+}
