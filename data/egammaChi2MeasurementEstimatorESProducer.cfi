@@ -1,10 +1,10 @@
-# $Id: $
+# $Id: egammaChi2MeasurementEstimatorESProducer.cfi,v 1.1 2006/08/01 17:12:18 rahatlou Exp $
 # there is another instance in
 # TrackingTools/KalmanUpdators/data/Chi2MeasurementEstimatorESProducer.cfi
 # but this one has different cuts
 #
 es_module egammaChi2MeasurementEstimatorESProducer = Chi2MeasurementEstimatorESProducer  {
-  string ComponentName = "Chi2"
+  string ComponentName = "egammaChi2"
   #double MaxChi2 = 30.
   double MaxChi2 = 5.
   double nSigma = 3.

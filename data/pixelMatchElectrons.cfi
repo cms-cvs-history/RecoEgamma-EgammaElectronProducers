@@ -1,6 +1,6 @@
 #
 # produce electrons based on matched pixel hits
-# $Id: $
+# $Id: pixelMatchElectrons.cfi,v 1.1 2006/08/01 17:12:18 rahatlou Exp $
 #
 # Original Author:  Ursula Berthon, Claude Charlot
 #
@@ -41,6 +41,6 @@ module pixelMatchElectrons = PixelMatchElectronProducer {
   string propagatorAlong      = "PropagatorWithMaterial"
   string propagatorOpposite   = "PropagatorWithMaterialOpposite"
   string updator              = "KFUpdator"
-  string estimator            = "Chi2"
+  string estimator            = "egammaChi2"
 
 }
