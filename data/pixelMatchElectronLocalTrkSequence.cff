@@ -2,7 +2,7 @@
 # create a sequence with all required modules and sources needed to make
 # pixel based electrons
 #
-# $Id: $
+# $Id: pixelMatchElectronLocalTrkSequence.cff,v 1.1 2006/08/01 17:12:18 rahatlou Exp $
 #
 ############ initialize magnetic field #########################
 include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
@@ -39,4 +39,4 @@ include "RecoTracker/CkfPattern/data/CkfTrackCandidates.cfi"
 include "RecoLocalTracker/SiStripRecHitConverter/data/SiStripRecHitMatcher.cfi"
 
 # create sequence for tracking
-sequence pixelMatchElectronLocalTrkSequence = { ThreeThresholdClusterizer, SiStripRecHits2D }
+sequence pixelMatchElectronLocalTrkSequence = { siStripClusters, siStripMatchedRecHits }
