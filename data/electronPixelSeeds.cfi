@@ -1,6 +1,6 @@
 #
 # module to produce pixel seeds for electrons from super clusters
-# $Id: electronPixelSeeds.cfi,v 1.2 2006/08/02 14:31:03 rahatlou Exp $
+# $Id: electronPixelSeeds.cfi,v 1.3 2006/08/24 08:41:36 charlot Exp $
 # Author:  Ursula Berthon, Claude Charlot
 #
 module electronPixelSeeds= ElectronPixelSeedProducer {
@@ -17,10 +17,9 @@ module electronPixelSeeds= ElectronPixelSeedProducer {
   double NSigmaInside = 3.
   string superClusterBarrelProducer = "correctedHybridSuperClusters"
   string superClusterBarrelLabel = ""
-
-  PSet MeasurementTrackerParameters = {
-    string PixelCPE = "PixelCPEfromTrackAngle"
-    string StripCPE = "StripCPEfromTrackAngle"
-    double NSigmaInside =3
-  }
+#  PSet MeasurementTrackerParameters = {
+#    string PixelCPE = "PixelCPEfromTrackAngle"
+#    string StripCPE = "StripCPEfromTrackAngle"
+#    double NSigmaInside =3
+#  }
 }

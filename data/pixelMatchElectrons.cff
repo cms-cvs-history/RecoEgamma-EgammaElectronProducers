@@ -1,0 +1,13 @@
+include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
+#TrajectoryBuilder
+es_module TrajectoryBuilderForPixelMatchElectrons = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
+
+replace TrajectoryBuilderForPixelMatchElectrons.ComponentName = "TrajectoryBuilderForPixelMatchElectrons"
+
+replace TrajectoryBuilderForPixelMatchElectrons.estimator = "egammaChi2"
+
+
+#pixelMatchedElectrons
+include "RecoEgamma/EgammaElectronProducers/data/pixelMatchElectrons.cfi"
+
+

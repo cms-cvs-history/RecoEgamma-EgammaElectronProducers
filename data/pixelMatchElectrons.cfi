@@ -1,30 +1,31 @@
 #
 # produce electrons based on matched pixel hits
-# $Id: pixelMatchElectrons.cfi,v 1.1 2006/08/01 17:12:18 rahatlou Exp $
+# $Id: pixelMatchElectrons.cfi,v 1.2 2006/08/04 20:10:43 rahatlou Exp $
 #
 # Original Author:  Ursula Berthon, Claude Charlot
 #
 module pixelMatchElectrons = PixelMatchElectronProducer {
 
   string SeedProducer         = "electronPixelSeeds"
-  double ptCut                = 0.9
-  int32  maxCand              = 5
-  int32  maxLostHit           = 1
-  int32  maxConsecLostHit     = 1
-  double lostHitPenalty       = 30.
-  bool   intermediateCleaning = true
-  #int32  minimumNumberOfHits  = 5
-  int32  minimumNumberOfHits  = 3
-  bool   alwaysUseInvalidHits = true
-  bool   seedCleaning         = false
-  string TTRHBuilder          = "WithTrackAngle"
+#  double ptCut                = 0.9
+#  int32  maxCand              = 5
+#  int32  maxLostHit           = 1
+#  int32  maxConsecLostHit     = 1
+#  double lostHitPenalty       = 30.
+#  bool   intermediateCleaning = true
+#  #int32  minimumNumberOfHits  = 5
+#  int32  minimumNumberOfHits  = 3
+#  bool   alwaysUseInvalidHits = true
+#  bool   seedCleaning         = false
+  string TrajectoryBuilder    = "TrajectoryBuilderForPixelMatchElectrons"
+#  string TTRHBuilder          = "WithTrackAngle"
 
-  # nested parameter set for MeasurementTracker
-  PSet MeasurementTrackerParameters = {
-    string PixelCPE = "PixelCPEfromTrackAngle"
-    string StripCPE = "StripCPEfromTrackAngle"
-    double NSigmaInside =3
-  }
+#  # nested parameter set for MeasurementTracker
+#  PSet MeasurementTrackerParameters = {
+#    string PixelCPE = "PixelCPEfromTrackAngle"
+#    string StripCPE = "StripCPEfromTrackAngle"
+#    double NSigmaInside =3
+#  }
 
   # nested parameter set for TransientInitialStateEstimator
   PSet TransientInitialStateEstimatorParameters = {
