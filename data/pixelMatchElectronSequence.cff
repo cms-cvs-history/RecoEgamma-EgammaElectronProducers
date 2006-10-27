@@ -1,4 +1,4 @@
-# $Id: pixelMatchElectronSequence.cff,v 1.3 2006/10/05 17:25:57 uberthon Exp $
+# $Id: pixelMatchElectronSequence.cff,v 1.4 2006/10/17 09:24:18 uberthon Exp $
 # create a sequence with all required modules and sources needed to make
 # pixel based electrons
 # NB: it assumes that ECAL clusters (hybrid) are in the event
@@ -33,22 +33,26 @@ include "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cfi"
 include "RecoEgamma/EgammaElectronProducers/data/pixelMatchElectrons.cff"
 # CKFTrackCandidateMaker
 include "RecoTracker/CkfPattern/data/CkfTrackCandidates.cff"
-replace ckfTrackCandidates.SeedProducer ="electronPixelSeeds"
-replace ckfTrackCandidates.SeedLabel ="correctedHybridSuperClusters"
+module ckfTrackCandidatesBarrel = ckfTrackCandidates from "RecoTracker/CkfPattern/data/CkfTrackCandidates.cfi"
+replace ckfTrackCandidatesBarrel.SeedProducer ="electronPixelSeeds"
+replace ckfTrackCandidatesBarrel.SeedLabel ="correctedHybridSuperClusters"
+
 module ckfTrackCandidatesEndcap = ckfTrackCandidates from "RecoTracker/CkfPattern/data/CkfTrackCandidates.cfi"
 replace ckfTrackCandidatesEndcap.SeedProducer ="electronPixelSeeds"
 replace ckfTrackCandidatesEndcap.SeedLabel ="correctedIslandEndcapSuperClusters"
 
 # CTF track fit with material
 include "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cff"
+module ctfWithMaterialTracksBarrel = ctfWithMaterialTracks from "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cfi"
+replace ctfWithMaterialTracksBarrel.src = "ckfTrackCandidatesBarrel"
 module ctfWithMaterialTracksEndcap = ctfWithMaterialTracks from "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cfi"
 replace ctfWithMaterialTracksEndcap.src = "ckfTrackCandidatesEndcap"
 
 sequence pixelMatchElectronSequence = {
                                         electronPixelSeeds,
-                                        ckfTrackCandidates, 
+                                        ckfTrackCandidatesBarrel, 
                                         ckfTrackCandidatesEndcap, 
-                                        ctfWithMaterialTracks,
+                                        ctfWithMaterialTracksBarrel,
                                         ctfWithMaterialTracksEndcap,
                                         pixelMatchElectrons
                                       }
