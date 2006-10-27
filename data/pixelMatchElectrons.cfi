@@ -1,6 +1,6 @@
 #
 # produce electrons based on matched pixel hits
-# $Id: pixelMatchElectrons.cfi,v 1.4 2006/10/17 09:24:18 uberthon Exp $
+# $Id: pixelMatchElectrons.cfi,v 1.5 2006/10/27 15:04:03 uberthon Exp $
 #
 # Original Author:  Ursula Berthon, Claude Charlot
 #
@@ -33,8 +33,10 @@ module pixelMatchElectrons = PixelMatchElectronProducer {
      string propagatorOppositeTISE = "PropagatorWithMaterialOpposite"
   }
 
-  double maxEOverP = 3.
-  double maxHOverE = 0.1
+  double maxEOverPBarrel = 3.
+  double maxEOverPEndcaps = 3.
+  double hOverEConeSize = 0.1
+  double maxHOverE = 0.2
   double maxDeltaEta = 0.02
   double maxDeltaPhi = 0.1
 
