@@ -1,0 +1,8 @@
+module ctfWithMaterialTracks = TrackProducerWithSeedAssoc 
+{
+  string Fitter = "KFFittingSmoother"   
+  string Propagator = "PropagatorWithMaterial" 
+  string src = "ckfTrackCandidates"
+  string TTRHBuilder       =   "WithTrackAngle"
+  bool TrajectoryInEvent = false
+}                                                                                                                                                           

@@ -1,6 +1,6 @@
-include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
+include "RecoEgamma/EgammaElectronProducers/data/CkfTrajectoryBuilderWithSeedAssocESProducer.cff"
 #TrajectoryBuilder
-es_module TrajectoryBuilderForPixelMatchElectrons = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
+es_module TrajectoryBuilderForPixelMatchElectrons = CkfTrajectoryBuilderWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/CkfTrajectoryBuilderWithSeedAssocESProducer.cfi"
 
 replace TrajectoryBuilderForPixelMatchElectrons.ComponentName = "TrajectoryBuilderForPixelMatchElectrons"
 
