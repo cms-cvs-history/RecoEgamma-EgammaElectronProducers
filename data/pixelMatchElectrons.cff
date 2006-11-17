@@ -4,9 +4,6 @@ es_module TrajectoryBuilderForPixelMatchElectrons = CkfTrajectoryBuilderWithSeed
 
 replace TrajectoryBuilderForPixelMatchElectrons.ComponentName = "TrajectoryBuilderForPixelMatchElectrons"
 
-replace TrajectoryBuilderForPixelMatchElectrons.estimator = "egammaChi2"
-
-
 #pixelMatchedElectrons
 include "RecoEgamma/EgammaElectronProducers/data/pixelMatchElectrons.cfi"
 

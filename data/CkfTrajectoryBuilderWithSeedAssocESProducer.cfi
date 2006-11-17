@@ -9,13 +9,13 @@ es_module CkfTrajectoryBuilderWithSeedAssoc = CkfTrajectoryBuilderWithSeedAssocE
   int32  maxConsecLostHit     = 1
   double lostHitPenalty       = 30.
   bool   intermediateCleaning = true
-  int32  minimumNumberOfHits  = 5
+  int32  minimumNumberOfHits  = 3
   bool   alwaysUseInvalidHits = true
 
   string TTRHBuilder          = "WithTrackAngle"
   string propagatorAlong      = "PropagatorWithMaterial"
   string propagatorOpposite   = "PropagatorWithMaterialOpposite"
   string updator              = "KFUpdator"
-  string estimator            = "Chi2"
+  string estimator            = "egammaChi2"
 
 }
