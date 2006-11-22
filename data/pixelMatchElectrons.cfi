@@ -1,24 +1,24 @@
 #
 # produce electrons based on matched pixel hits
-# $Id: pixelMatchElectrons.cfi,v 1.9 2006/11/17 16:16:46 uberthon Exp $
+# $Id: pixelMatchElectrons.cfi,v 1.10 2006/11/20 15:56:02 uberthon Exp $
 #
 # Original Author:  Ursula Berthon, Claude Charlot
 #
 module pixelMatchElectrons = PixelMatchElectronProducer {
 
-  string TrackBarrelLabel = "ctfWithMaterialTracksBarrel"
+  string TrackBarrelLabel    = "egammaCtfWithMaterialTracksBarrel"
   string TrackBarrelProducer = ""
-  string TrackEndcapLabel = "ctfWithMaterialTracksEndcap"
+  string TrackEndcapLabel    = "egammaCtfWithMaterialTracksEndcap"
   string TrackEndcapProducer = ""
   string SCLBarrelLabel            = "electronPixelSeeds"
   string SCLBarrelProducer         = "correctedHybridSuperClusters"
   string SCLEndcapLabel            = "electronPixelSeeds"
   string SCLEndcapProducer         = "correctedIslandEndcapSuperClusters"
-  string AssocTrTSBarrelLabel = "ctfWithMaterialTracksBarrel"
-  string AssocTrTBarrelProducer = ""
-  string AssocTrTEndcapLabel = "ctfWithMaterialTracksEndcap"
-  string AssocTrTEndcapProducer = ""
-  string TrajectoryBuilder    = "TrajectoryBuilderForPixelMatchElectrons"
+  string AssocTrTSBarrelLabel      = "egammaCtfWithMaterialTracksBarrel"
+  string AssocTrTBarrelProducer    = ""
+  string AssocTrTEndcapLabel       = "egammaCtfWithMaterialTracksEndcap"
+  string AssocTrTEndcapProducer    = ""
+  string TrajectoryBuilder         = "TrajectoryBuilderForPixelMatchElectrons"
 
   # nested parameter set for TransientInitialStateEstimator
   PSet TransientInitialStateEstimatorParameters = {
