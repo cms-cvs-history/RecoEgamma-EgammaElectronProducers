@@ -2,7 +2,7 @@ module egammaCtfWithMaterialTracks = TrackProducerWithSeedAssoc
 {
   string Fitter = "KFFittingSmoother"   
   string Propagator = "PropagatorWithMaterial" 
-  string src = "ckfTrackCandidates"
+  string src = "egammaCkfTrackCandidates"
   string TTRHBuilder       =   "WithTrackAngle"
   bool TrajectoryInEvent = false
 }                                                                                                                                                           
