@@ -2,8 +2,15 @@ module electronAnalyzer = ElectronAnalyzer {
    double minElePt = 5.
    double REleCut = 0.1
    string outputFile = "electronAnalysisOutput.root"
+ 
    InputTag electronProducer = pixelMatchElectrons
    # InputTag superClusterProducer = hybridSuperClusters
    InputTag superClusterProducer = islandSuperClusters:islandBarrelSuperClusters
    string mcProducer = "VtxSmeared"
+ 
+   string islandBarrelBasicClusterCollection = "islandBarrelBasicClusters"
+   string islandBarrelBasicClusterProducer = "islandBasicClusters"
+   string islandBarrelBasicClusterShapes = "islandBarrelShape" 
+       
+
 }
