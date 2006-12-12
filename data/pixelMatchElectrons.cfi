@@ -1,6 +1,6 @@
 #
 # produce electrons based on matched pixel hits
-# $Id: pixelMatchElectrons.cfi,v 1.10 2006/11/20 15:56:02 uberthon Exp $
+# $Id: pixelMatchElectrons.cfi,v 1.11 2006/11/22 10:21:35 rahatlou Exp $
 #
 # Original Author:  Ursula Berthon, Claude Charlot
 #
@@ -13,7 +13,7 @@ module pixelMatchElectrons = PixelMatchElectronProducer {
   string SCLBarrelLabel            = "electronPixelSeeds"
   string SCLBarrelProducer         = "correctedHybridSuperClusters"
   string SCLEndcapLabel            = "electronPixelSeeds"
-  string SCLEndcapProducer         = "correctedIslandEndcapSuperClusters"
+  string SCLEndcapProducer         = "correctedEndcapSuperClustersWithPreshower"
   string AssocTrTSBarrelLabel      = "egammaCtfWithMaterialTracksBarrel"
   string AssocTrTBarrelProducer    = ""
   string AssocTrTEndcapLabel       = "egammaCtfWithMaterialTracksEndcap"

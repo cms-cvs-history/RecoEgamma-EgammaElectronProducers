@@ -1,4 +1,4 @@
-# $Id: pixelMatchElectronSequence.cff,v 1.7 2006/11/22 10:21:35 rahatlou Exp $
+# $Id: pixelMatchElectronSequence.cff,v 1.8 2006/11/27 10:52:49 tboccali Exp $
 # create a sequence with all required modules and sources needed to make
 # pixel based electrons
 # NB: it assumes that ECAL clusters (hybrid) are in the event
@@ -42,7 +42,7 @@ replace egammaCkfTrackCandidatesBarrel.SeedLabel ="correctedHybridSuperClusters"
 module egammaCkfTrackCandidatesEndcap = egammaCkfTrackCandidatesWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/egammaCkfTrackCandidatesWithSeedAssoc.cfi"
 #replace ckfTrackCandidatesEndcap.TrajectoryBuilder = "CkfTrajectoryBuilderWithSeedAssoc"
 replace egammaCkfTrackCandidatesEndcap.SeedProducer ="electronPixelSeeds"
-replace egammaCkfTrackCandidatesEndcap.SeedLabel ="correctedIslandEndcapSuperClusters"
+replace egammaCkfTrackCandidatesEndcap.SeedLabel ="correctedEndcapSuperClustersWithPreshower"
 
 # CTF track fit with material, version using Seed Association
 include "RecoEgamma/EgammaElectronProducers/data/egammaCtfWithMaterialTracks.cff"
