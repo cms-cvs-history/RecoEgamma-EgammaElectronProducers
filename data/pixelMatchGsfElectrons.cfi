@@ -27,36 +27,37 @@ es_module bwdGsfElectronPropagator = PropagatorWithMaterialESProducer {
 
 module pixelMatchGsfElectrons = PixelMatchGsfElectronProducer {
 
-  string SeedProducer         = "electronPixelSeeds"
-  double ptCut                = 3.
-  int32  maxCand              = 2
-  int32  maxLostHit           = 1
-  int32  maxConsecLostHit     = 1
-  double lostHitPenalty       = 50.
-  bool   intermediateCleaning = true
-  int32  minimumNumberOfHits  = 5
-  bool   alwaysUseInvalidHits = true
-  bool   seedCleaning         = false
-  string TTRHBuilder          = "WithTrackAngle"
+#  string SeedProducer         = "electronPixelSeeds"
+#  double ptCut                = 3.
+#  int32  maxCand              = 2
+#  int32  maxLostHit           = 1
+#  int32  maxConsecLostHit     = 1
+#  double lostHitPenalty       = 50.
+#  bool   intermediateCleaning = true
+#  int32  minimumNumberOfHits  = 5
+#  bool   alwaysUseInvalidHits = true
+#  bool   seedCleaning         = false
+#  string TTRHBuilder          = "WithTrackAngle"
 
   # needed for CkfTrajectoryBuilder	
-  string propagatorAlong      = "fwdGsfElectronPropagator"
-  string propagatorOpposite   = "bwdGsfElectronPropagator"
-  string updator              = "KFUpdator"
-  string estimator            = "gsfElectronChi2"    
-#??  string TrajectoryBuilder    = "TrajectoryBuilderForPixelMatchGsfElectrons"
-  string TrajectoryBuilder         = "TrajectoryBuilderForPixelMatchElectrons"
-  string TrackBarrelLabel          = "egammaCtfWithMaterialTracksBarrel"
+#  string propagatorAlong      = "fwdGsfElectronPropagator"
+#  string propagatorOpposite   = "bwdGsfElectronPropagator"
+#  string updator              = "KFUpdator"
+#  string estimator            = "gsfElectronChi2"    
+#  string TrajectoryBuilder    = "TrajectoryBuilderForPixelMatchGsfElectrons"
+
+  # 
+  string TrackBarrelLabel          = "pixelMatchGsfFitBarrel"
   string TrackBarrelProducer       = ""
-  string TrackEndcapLabel          = "egammaCtfWithMaterialTracksEndcap"
+  string TrackEndcapLabel          = "pixelMatchGsfFitEndcap"
   string TrackEndcapProducer       = ""
   string SCLBarrelLabel            = "electronPixelSeeds"
   string SCLBarrelProducer         = "correctedHybridSuperClusters"
   string SCLEndcapLabel            = "electronPixelSeeds"
   string SCLEndcapProducer         = "correctedIslandEndcapSuperClusters"
-  string AssocTrTSBarrelLabel      = "egammaCtfWithMaterialTracksBarrel"
+  string AssocTrTSBarrelLabel      = "pixelMatchGsfFitBarrel"
   string AssocTrTBarrelProducer    = ""
-  string AssocTrTEndcapLabel       = "egammaCtfWithMaterialTracksEndcap"
+  string AssocTrTEndcapLabel       = "pixelMatchGsfFitEndcap"
   string AssocTrTEndcapProducer    = ""
 
   # nested parameter set for TransientInitialStateEstimator

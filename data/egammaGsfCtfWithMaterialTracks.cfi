@@ -1,8 +1,0 @@
-module egammaCtfWithMaterialTracks = GsfTrackProducerWithSeedAssoc 
-{
-  string Fitter = "KFFittingSmoother"   
-  string Propagator = "PropagatorWithMaterial" 
-  string src = "egammaCkfTrackCandidates"
-  string TTRHBuilder       =   "WithTrackAngle"
-  bool TrajectoryInEvent = false
-}                                                                                                                                                           

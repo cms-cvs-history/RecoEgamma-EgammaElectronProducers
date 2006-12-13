@@ -1,0 +1,72 @@
+# taken from W.Adam's code in TrackingTools/GsfTracking/
+
+es_module ElectronMaterialEffects = GsfMaterialEffectsESProducer 
+{
+  string ComponentName = "ElectronMaterialEffects"
+  double Mass = 0.000511
+  string MultipleScatteringUpdator = "MultipleScatteringUpdator"
+  string EnergyLossUpdator = "GsfBetheHeitlerUpdator"
+  string BetheHeitlerParametrization = "BetheHeitler_cdfmom_nC6_O5.par"
+  int32 BetheHeitlerCorrection = 2
+}
+
+es_module KullbackLeiblerDistance = TSOSDistanceESProducer
+{
+  string ComponentName = "KullbackLeiblerDistance"
+  string DistanceMeasure = "KullbackLeibler"
+}
+
+es_module CloseComponentsMerger = CloseComponentsTSOSMergerESProducer
+{
+  string ComponentName = "CloseComponentsMerger"
+  int32 MaxComponents = 12
+  string DistanceMeasure = "KullbackLeiblerDistance"
+}
+
+es_module fwdAnalyticalPropagator = AnalyticalPropagatorESProducer 
+{
+  string ComponentName = "fwdAnalyticalPropagator"
+  string PropagationDirection = "alongMomentum"
+  double MaxDPhi              = 1.6
+}
+
+
+es_module GsfTrajectoryFitter = GsfTrajectoryFitterESProducer
+{
+  string ComponentName = "GsfTrajectoryFitter"
+  string MaterialEffectsUpdator = "ElectronMaterialEffects"
+  string GeometricalPropagator = "fwdAnalyticalPropagator"
+  string Merger = "CloseComponentsMerger"
+}
+
+es_module bwdAnalyticalPropagator = AnalyticalPropagatorESProducer 
+{
+  string ComponentName = "bwdAnalyticalPropagator"
+  string PropagationDirection = "oppositeToMomentum"
+  double MaxDPhi = 1.6
+}
+
+es_module GsfTrajectorySmoother = GsfTrajectorySmootherESProducer
+{
+  string ComponentName = "GsfTrajectorySmoother"
+  string MaterialEffectsUpdator = "ElectronMaterialEffects"
+  string GeometricalPropagator = "bwdAnalyticalPropagator"
+  string Merger = "CloseComponentsMerger"
+  double ErrorRescaling = 100.
+}
+
+es_module GsfElectronFittingSmoother = KFFittingSmootherESProducer
+{
+  string ComponentName = "GsfElectronFittingSmoother"
+  string  Fitter = "GsfTrajectoryFitter"
+  string Smoother = "GsfTrajectorySmoother"
+}
+
+module pixelMatchGsfFit = GsfTrackProducerWithSeedAssoc
+{
+  string Fitter      = "GsfElectronFittingSmoother"
+  string Propagator  = "fwdGsfElectronPropagator"
+  string src         = "pixelMatchGsfElectrons"
+  string TTRHBuilder = "WithTrackAngle"
+  bool TrajectoryInEvent = false
+}
