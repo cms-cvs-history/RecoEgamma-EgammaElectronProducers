@@ -74,9 +74,7 @@ module pixelMatchGsfElectrons = PixelMatchGsfElectronProducer {
   double maxHOverE = 0.2
   double maxDeltaEta = 0.02
   double maxDeltaPhi = 0.1
-
-
-#?  double maxHOverE = 0.1
+  double ptCut = 5.    # en Gev
 
 }
 
