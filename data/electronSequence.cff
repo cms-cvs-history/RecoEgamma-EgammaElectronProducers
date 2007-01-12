@@ -1,11 +1,11 @@
 #
 #  sequence to make both pixel-based and pixel-less electrons
-#  $Id: $
+#  $Id: electronSequence.cff,v 1.2 2006/08/04 19:45:12 rahatlou Exp $
 #
 # Created by Shahram Rahatlou, University of Rome & INFN, 4 Aug 2006
 #
 # sequence to make pixel-based electrons
-include "RecoEgamma/EgammaElectronProducers/data/pixelMatchElectronSequence.cff"
+include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfElectronSequence.cff"
 
 # sequence to make si-strip based electrons
 include "RecoEgamma/EgammaElectronProducers/data/siStripElectronSequence.cff"
