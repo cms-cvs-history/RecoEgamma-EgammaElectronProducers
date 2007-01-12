@@ -47,5 +47,5 @@ module egammaCTFFinalFitWithMaterial = TrackProducer {
   string alias             = "egammaCTFWithMaterialTracks"
   string TTRHBuilder       =   "WithTrackAngle"
   bool TrajectoryInEvent = false
-
+  string producer  = ""
 }
