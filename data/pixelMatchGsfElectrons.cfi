@@ -27,26 +27,8 @@ es_module bwdGsfElectronPropagator = PropagatorWithMaterialESProducer {
 
 module pixelMatchGsfElectrons = PixelMatchGsfElectronProducer {
 
-#  string SeedProducer         = "electronPixelSeeds"
-#  double ptCut                = 3.
-#  int32  maxCand              = 2
-#  int32  maxLostHit           = 1
-#  int32  maxConsecLostHit     = 1
-#  double lostHitPenalty       = 50.
-#  bool   intermediateCleaning = true
-#  int32  minimumNumberOfHits  = 5
-#  bool   alwaysUseInvalidHits = true
-#  bool   seedCleaning         = false
-#  string TTRHBuilder          = "WithTrackAngle"
-
-  # needed for CkfTrajectoryBuilder	
-#  string propagatorAlong      = "fwdGsfElectronPropagator"
-#  string propagatorOpposite   = "bwdGsfElectronPropagator"
-#  string updator              = "KFUpdator"
-#  string estimator            = "gsfElectronChi2"    
-#  string TrajectoryBuilder    = "TrajectoryBuilderForPixelMatchGsfElectrons"
-
-  # 
+  string hbheModule                = "hbhereco"
+  string hbheInstance              = ""
   string TrackBarrelLabel          = "pixelMatchGsfFitBarrel"
   string TrackBarrelProducer       = ""
   string TrackEndcapLabel          = "pixelMatchGsfFitEndcap"
@@ -70,7 +52,6 @@ module pixelMatchGsfElectrons = PixelMatchGsfElectronProducer {
   double maxEOverPBarrel = 3.
   double maxEOverPEndcaps = 3.
   double hOverEConeSize = 0.1
-#  double hOverEConeSize = 0.
   double maxHOverE = 0.2
   double maxDeltaEta = 0.02
   double maxDeltaPhi = 0.1
