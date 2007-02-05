@@ -7,4 +7,5 @@ module siStripElectronToTrackAssociator = SiStripElectronAssociator {
     string siStripElectronCollection = ""
     string trackProducer = "egammaCTFFinalFitWithMaterial"
     string trackCollection = ""
+    string electronsLabel = "siStripElectrons"
 }
