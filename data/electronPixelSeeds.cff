@@ -1,6 +1,0 @@
-# MeasurementTracker
-include "RecoTracker/MeasurementDet/data/MeasurementTrackerESProducer.cfi"
-
-
-#pixelMatchedElectrons
-include "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cfi"
