@@ -2,9 +2,10 @@ module findSiElectrons = SiStripElectronProducer {
     string siHitProducer = "siStripMatchedRecHits"
     string siRphiHitCollection = "rphiRecHit"
     string siStereoHitCollection = "stereoRecHit"
+    string siMatchedHitCollection = "matchedRecHit"	
     string superClusterProducer = "correctedHybridSuperClusters"
     string superClusterCollection = ""
-    string siStripElectronsLabel = ""
+    string siStripElectronsLabel = "findSiElectronsInSiStrips"
     string trackCandidatesLabel = ""
     
     int32 maxHitsOnDetId = 4
@@ -42,12 +43,27 @@ include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder
 # TrackProducer
 include "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cfi"
 replace ctfWithMaterialTracks.src = "findSiElectrons"
+# the above produces this warning in 1_3_0_pre1
+# WARNING: do not embed replace statements to modify a parameter from a module which hasn't been cloned: 
+#  Parameter src in ctfWithMaterialTracks
+#  Replace happens in RecoEgamma/EgammaElectronProducers/data/test13_code.cfi
+#  This will be an error in future releases.  Please fix.
+#module siElectronCtfWithMaterialTracks = TrackProducer 
+#{
+#  string Fitter = "KFFittingSmoother"   
+#  string Propagator = "PropagatorWithMaterial" 
+#  string src ="findSiElectrons"
+#  string producer = ""
+#  string TTRHBuilder       =   "WithTrackAngle"
+#  bool TrajectoryInEvent = false
+#} 
 
 module associateSiElectronsWithTracks = SiStripElectronAssociator {
     string siStripElectronProducer = "findSiElectrons"
-    string siStripElectronCollection = ""
+    string siStripElectronCollection = "findSiElectronsInSiStrips"
     string trackProducer = "ctfWithMaterialTracks"
     string trackCollection = ""
+    string electronsLabel = "siStripElectrons"
 }
 
 sequence findElectronsInSiStrips = {findSiElectrons, ctfWithMaterialTracks, associateSiElectronsWithTracks}
