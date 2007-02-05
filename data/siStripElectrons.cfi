@@ -6,6 +6,7 @@ module siStripElectrons = SiStripElectronProducer {
     string siHitProducer = "siStripMatchedRecHits"
     string siRphiHitCollection = "rphiRecHit"
     string siStereoHitCollection = "stereoRecHit"
+    string siMatchedHitCollection = "matchedRecHit"
     string superClusterProducer = "correctedHybridSuperClusters"
     string superClusterCollection = ""
     string siStripElectronsLabel = ""
