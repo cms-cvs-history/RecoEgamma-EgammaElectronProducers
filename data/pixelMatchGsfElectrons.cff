@@ -16,7 +16,7 @@ replace CkfTrajectoryBuilderWithSeedAssoc.maxCand = 2
 replace CkfTrajectoryBuilderWithSeedAssoc.estimator =  "gsfElectronChi2"
 replace CkfTrajectoryBuilderWithSeedAssoc.propagatorAlong    = "fwdGsfElectronPropagator"
 replace CkfTrajectoryBuilderWithSeedAssoc.propagatorOpposite = "bwdGsfElectronPropagator"
-
+replace CkfTrajectoryBuilderWithSeedAssoc.ptCut   = 3
 
 #pixelMatchedElectrons
 include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfElectrons.cfi"
