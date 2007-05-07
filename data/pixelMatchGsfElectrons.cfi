@@ -1,30 +1,6 @@
 # produce electrons based on matched pixel hits with gsf fit
 #
 
-# Looser chi2 estimator for electron trajectory building 
-es_module gsfElectronChi2 = Chi2MeasurementEstimatorESProducer
-  {
-    string ComponentName = "gsfElectronChi2"
-    double MaxChi2 = 100000.
-    double nSigma = 3.
-  }
-
-# "forward" propagator for electrons
-es_module fwdGsfElectronPropagator = PropagatorWithMaterialESProducer {
-    string ComponentName = "fwdGsfElectronPropagator"
-    string PropagationDirection = "alongMomentum"
-    double Mass = 0.000511
-    double MaxDPhi = 1.6	
-  }
-
-# "backward" propagator for electrons
-es_module bwdGsfElectronPropagator = PropagatorWithMaterialESProducer {
-    string ComponentName = "bwdGsfElectronPropagator"
-    string PropagationDirection = "oppositeToMomentum"
-    double Mass = 0.000511
-    double MaxDPhi = 1.6	
-  }
-
 module pixelMatchGsfElectrons = PixelMatchGsfElectronProducer {
 
   string hbheModule                = "hbhereco"
