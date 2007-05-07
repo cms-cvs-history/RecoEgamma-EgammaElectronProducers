@@ -8,6 +8,8 @@ module egammaCkfTrackCandidatesWithSeedAssoc = CkfTrackCandidateMakerWithSeedAss
      string SeedProducer          = "globalMixedSeeds"
      string SeedLabel             = ""
      string TrajectoryBuilder    = "CkfTrajectoryBuilderWithSeedAssoc"
+#     string RedundantSeedCleaner = "none"
+     string RedundantSeedCleaner = "CachingSeedCleanerByHitPosition"
 
 
 # nested parameter set for TransientInitialStateEstimator
