@@ -1,6 +1,6 @@
 #
 # produce electrons based on matched pixel hits
-# $Id: pixelMatchElectrons.cfi,v 1.12 2006/12/12 22:09:26 futyand Exp $
+# $Id: pixelMatchElectrons.cfi,v 1.13 2006/12/21 16:12:54 uberthon Exp $
 #
 # Original Author:  Ursula Berthon, Claude Charlot
 #
@@ -29,10 +29,11 @@ module pixelMatchElectrons = PixelMatchElectronProducer {
   # electron preselection parameters
   double maxEOverPBarrel = 3.
   double maxEOverPEndcaps = 3.
+  double minEOverPBarrel = 0.35
+  double minEOverPEndcaps = 0.35
   double hOverEConeSize = 0.1
   double maxHOverE = 0.2
   double maxDeltaEta = 0.02
   double maxDeltaPhi = 0.1
   double ptCut =5.
-
 }
