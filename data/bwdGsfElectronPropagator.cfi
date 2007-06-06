@@ -1,8 +1,0 @@
-
-# "backward" propagator for electrons
-es_module bwdGsfElectronPropagator = PropagatorWithMaterialESProducer {
-    string ComponentName = "bwdGsfElectronPropagator"
-    string PropagationDirection = "oppositeToMomentum"
-    double Mass = 0.000511
-    double MaxDPhi = 1.6	
-  }
