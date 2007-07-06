@@ -1,4 +1,4 @@
-# $Id: pixelMatchGsfElectronSequence.cff,v 1.5 2007/05/07 12:50:43 uberthon Exp $
+# $Id: pixelMatchGsfElectronSequence.cff,v 1.6 2007/06/22 09:32:20 charlot Exp $
 # create a sequence with all required modules and sources needed to make
 # pixel based Gsf electrons
 # NB: it assumes that ECAL clusters (hybrid) are in the event
@@ -29,7 +29,7 @@ replace egammaCkfTrackCandidatesEndcap.SeedProducer ="electronPixelSeeds"
 replace egammaCkfTrackCandidatesEndcap.SeedLabel ="correctedEndcapSuperClustersWithPreshower"
 
 # sources needed for GSF fit
-include "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
+include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
 
 # Gsf track fit, version using Seed Association
 module pixelMatchGsfFitBarrel = pixelMatchGsfFit from "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfFit.cfi"
