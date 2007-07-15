@@ -1,12 +1,5 @@
 
 # "backward" propagator for electrons
-
-  es_module bwdGsfElectronPropagator = OppositeMaterialPropagator from "TrackingTools/MaterialEffects/data/OppositeMaterialPropagator.cfi"
-  replace bwdGsfElectronPropagator.Mass = 0.000511
-  replace bwdGsfElectronPropagator.ComponentName = "bwdGsfElectronPropagator"
-### es_module bwdGsfElectronPropagator = PropagatorWithMaterialESProducer {
-###     string ComponentName = "bwdGsfElectronPropagator"
-###     string PropagationDirection = "oppositeToMomentum"
-###     double Mass = 0.000511
-###     double MaxDPhi = 1.6	
-###   }
+es_module bwdGsfElectronPropagator = OppositeMaterialPropagator from "TrackingTools/MaterialEffects/data/OppositeMaterialPropagator.cfi"
+replace bwdGsfElectronPropagator.Mass = 0.000511
+replace bwdGsfElectronPropagator.ComponentName = "bwdGsfElectronPropagator"

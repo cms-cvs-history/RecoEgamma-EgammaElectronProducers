@@ -8,7 +8,8 @@ module egammaCkfTrackCandidatesWithSeedAssoc = CkfTrackCandidateMakerWithSeedAss
      string SeedProducer          = "globalMixedSeeds"
      string SeedLabel             = ""
      string TrajectoryBuilder    = "CkfTrajectoryBuilderWithSeedAssoc"
-#     string RedundantSeedCleaner = "none"
+     #string RedundantSeedCleaner = "none"
+     #string RedundantSeedCleaner = "CachingSeedCleanerBySharedInput"
      string RedundantSeedCleaner = "CachingSeedCleanerByHitPosition"
 
 
@@ -18,5 +19,9 @@ module egammaCkfTrackCandidatesWithSeedAssoc = CkfTrackCandidateMakerWithSeedAss
          string propagatorAlongTISE    = "PropagatorWithMaterial"
          string propagatorOppositeTISE = "PropagatorWithMaterialOpposite"
       }
+
+     PSet NavigationPSet = {
+         string ComponentName = "SimpleNavigationSchool"
+     }
 
   }

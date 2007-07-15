@@ -1,11 +1,4 @@
 # "forward" propagator for electrons
-  es_module fwdGsfElectronPropagator = MaterialPropagator from "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
-  replace   fwdGsfElectronPropagator.Mass = 0.000511
-  replace   fwdGsfElectronPropagator.ComponentName = "fwdGsfElectronPropagator"
-
-### es_module fwdGsfElectronPropagator = PropagatorWithMaterialESProducer {
-###     string ComponentName = "fwdGsfElectronPropagator"
-###     string PropagationDirection = "alongMomentum"
-###     double Mass = 0.000511
-###     double MaxDPhi = 1.6	
-###   }
+es_module fwdGsfElectronPropagator = MaterialPropagator from "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
+replace fwdGsfElectronPropagator.Mass = 0.000511
+replace fwdGsfElectronPropagator.ComponentName = "fwdGsfElectronPropagator"

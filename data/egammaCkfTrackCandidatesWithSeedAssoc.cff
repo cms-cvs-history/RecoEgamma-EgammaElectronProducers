@@ -1,13 +1,4 @@
 
-# KFTrajectoryFitterESProducer
-include "TrackingTools/TrackFitters/data/KFTrajectoryFitterESProducer.cfi"
-
-# KFTrajectorySmootherESProducer
-include "TrackingTools/TrackFitters/data/KFTrajectorySmootherESProducer.cfi"
-
-# KFFittingSmootherESProducer
-include "TrackingTools/TrackFitters/data/KFFittingSmootherESProducer.cfi"
-
 # TrackerTrajectoryBuilders
 include "RecoEgamma/EgammaElectronProducers/data/CkfTrajectoryBuilderWithSeedAssocESProducer.cff"
 include "RecoTracker/CkfPattern/data/GroupedCkfTrajectoryBuilderESProducer.cff"

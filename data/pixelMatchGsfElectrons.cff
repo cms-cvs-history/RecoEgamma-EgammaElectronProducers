@@ -12,6 +12,7 @@ replace TrajectoryBuilderForPixelMatchGsfElectrons.estimator = "gsfElectronChi2"
 replace TrajectoryBuilderForPixelMatchGsfElectrons.propagatorAlong    = "fwdGsfElectronPropagator"
 replace TrajectoryBuilderForPixelMatchGsfElectrons.propagatorOpposite = "bwdGsfElectronPropagator"
 replace TrajectoryBuilderForPixelMatchGsfElectrons.maxCand = 3
+replace TrajectoryBuilderForPixelMatchGsfElectrons.minimumNumberOfHits = 5
 replace TrajectoryBuilderForPixelMatchGsfElectrons.ptCut   = 3.
 
 # pixelMatchedElectrons
