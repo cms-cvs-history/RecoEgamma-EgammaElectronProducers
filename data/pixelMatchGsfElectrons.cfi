@@ -17,6 +17,10 @@ module pixelMatchGsfElectrons = PixelMatchGsfElectronProducer {
   string AssocTrTBarrelProducer    = ""
   string AssocTrTEndcapLabel       = "pixelMatchGsfFitEndcap"
   string AssocTrTEndcapProducer    = ""
+  string AssocShapeBarrelLabel      = "hybridShapeAssoc"
+  string AssocShapeBarrelProducer    = "hybridSuperClusters"
+  string AssocShapeEndcapLabel       = "islandEndcapShapeAssoc"
+  string AssocShapeEndcapProducer    = "islandBasicClusters"
 
   # nested parameter set for TransientInitialStateEstimator
   PSet TransientInitialStateEstimatorParameters = {
