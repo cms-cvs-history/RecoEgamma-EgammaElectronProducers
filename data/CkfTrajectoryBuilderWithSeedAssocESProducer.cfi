@@ -2,6 +2,7 @@ es_module CkfTrajectoryBuilderWithSeedAssoc = CkfTrajectoryBuilderWithSeedAssocE
 {
   string ComponentName = "CkfTrajectoryBuilderWithSeedAssoc"
   string MeasurementTrackerName = ""
+  double chargeSignificance   = -1.
 
   double ptCut                = 0.9
   int32  maxNumberOfHits      = -1
