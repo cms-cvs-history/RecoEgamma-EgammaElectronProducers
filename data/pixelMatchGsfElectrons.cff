@@ -4,7 +4,8 @@ include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cfi"
 include "RecoEgamma/EgammaElectronProducers/data/bwdGsfElectronPropagator.cfi"
 
 # TrajectoryBuilder
-es_module TrajectoryBuilderForPixelMatchGsfElectrons = CkfTrajectoryBuilderWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/CkfTrajectoryBuilderWithSeedAssocESProducer.cfi"
+#es_module TrajectoryBuilderForPixelMatchGsfElectrons = CkfTrajectoryBuilderWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/CkfTrajectoryBuilderWithSeedAssocESProducer.cfi"
+es_module TrajectoryBuilderForPixelMatchGsfElectrons = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
 
 replace TrajectoryBuilderForPixelMatchGsfElectrons.ComponentName = "TrajectoryBuilderForPixelMatchGsfElectrons"
 

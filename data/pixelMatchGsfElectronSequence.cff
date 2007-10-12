@@ -1,4 +1,4 @@
-# $Id: pixelMatchGsfElectronSequence.cff,v 1.6 2007/06/22 09:32:20 charlot Exp $
+# $Id: pixelMatchGsfElectronSequence.cff,v 1.7 2007/07/06 11:13:26 charlot Exp $
 # create a sequence with all required modules and sources needed to make
 # pixel based Gsf electrons
 # NB: it assumes that ECAL clusters (hybrid) are in the event
@@ -8,22 +8,24 @@
 # tracking stuff
 include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
 include "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cff"
-include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
 
 # modules to make seeds, tracks and electrons
 include "RecoEgamma/EgammaElectronProducers/data/egammaChi2MeasurementEstimatorESProducer.cfi"
 include "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cfi"
 include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfElectrons.cff"
-include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfFit.cfi"
+#include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfFit.cfi"
 
 # CKFTrackCandidateMaker
-include "RecoEgamma/EgammaElectronProducers/data/egammaCkfTrackCandidatesWithSeedAssoc.cff"
-module egammaCkfTrackCandidatesBarrel = egammaCkfTrackCandidatesWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/egammaCkfTrackCandidatesWithSeedAssoc.cfi"
+#include "RecoEgamma/EgammaElectronProducers/data/egammaCkfTrackCandidatesWithSeedAssoc.cff"
+include "RecoTracker/CkfPattern/data/CkfTrackCandidates.cff"
+#module egammaCkfTrackCandidatesBarrel = egammaCkfTrackCandidatesWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/egammaCkfTrackCandidatesWithSeedAssoc.cfi"
+module egammaCkfTrackCandidatesBarrel = ckfTrackCandidates from "RecoTracker/CkfPattern/data/CkfTrackCandidates.cfi"
 replace egammaCkfTrackCandidatesBarrel.TrajectoryBuilder = "TrajectoryBuilderForPixelMatchGsfElectrons"
 replace egammaCkfTrackCandidatesBarrel.SeedProducer ="electronPixelSeeds"
 replace egammaCkfTrackCandidatesBarrel.SeedLabel ="correctedHybridSuperClusters"
 
-module egammaCkfTrackCandidatesEndcap = egammaCkfTrackCandidatesWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/egammaCkfTrackCandidatesWithSeedAssoc.cfi"
+#module egammaCkfTrackCandidatesEndcap = egammaCkfTrackCandidatesWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/egammaCkfTrackCandidatesWithSeedAssoc.cfi"
+module egammaCkfTrackCandidatesEndcap = ckfTrackCandidates from "RecoTracker/CkfPattern/data/CkfTrackCandidates.cfi"
 replace egammaCkfTrackCandidatesEndcap.TrajectoryBuilder = "TrajectoryBuilderForPixelMatchGsfElectrons"
 replace egammaCkfTrackCandidatesEndcap.SeedProducer ="electronPixelSeeds"
 replace egammaCkfTrackCandidatesEndcap.SeedLabel ="correctedEndcapSuperClustersWithPreshower"
@@ -32,10 +34,15 @@ replace egammaCkfTrackCandidatesEndcap.SeedLabel ="correctedEndcapSuperClustersW
 include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
 
 # Gsf track fit, version using Seed Association
-module pixelMatchGsfFitBarrel = pixelMatchGsfFit from "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfFit.cfi"
+#module pixelMatchGsfFitBarrel = pixelMatchGsfFit from "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfFit.cfi"
+module pixelMatchGsfFitBarrel = GsfElectrons from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
 replace pixelMatchGsfFitBarrel.src = "egammaCkfTrackCandidatesBarrel"
-module pixelMatchGsfFitEndcap = pixelMatchGsfFit from "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfFit.cfi"
+replace pixelMatchGsfFitBarrel.Propagator  = "fwdGsfElectronPropagator"
+#  string src         = "pixelMatchGsfElectrons"
+#module pixelMatchGsfFitEndcap = pixelMatchGsfFit from "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfFit.cfi"
+module pixelMatchGsfFitEndcap = GsfElectrons from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
 replace pixelMatchGsfFitEndcap.src = "egammaCkfTrackCandidatesEndcap"
+replace pixelMatchGsfFitEndcap.Propagator  = "fwdGsfElectronPropagator"
 
 sequence pixelMatchGsfElectronSequence = {
                                         electronPixelSeeds,
