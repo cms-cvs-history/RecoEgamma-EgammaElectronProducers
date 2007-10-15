@@ -4,7 +4,6 @@ include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cfi"
 include "RecoEgamma/EgammaElectronProducers/data/bwdGsfElectronPropagator.cfi"
 
 # TrajectoryBuilder
-#es_module TrajectoryBuilderForPixelMatchGsfElectrons = CkfTrajectoryBuilderWithSeedAssoc from "RecoEgamma/EgammaElectronProducers/data/CkfTrajectoryBuilderWithSeedAssocESProducer.cfi"
 es_module TrajectoryBuilderForPixelMatchGsfElectrons = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
 
 replace TrajectoryBuilderForPixelMatchGsfElectrons.ComponentName = "TrajectoryBuilderForPixelMatchGsfElectrons"
@@ -15,6 +14,9 @@ replace TrajectoryBuilderForPixelMatchGsfElectrons.propagatorOpposite = "bwdGsfE
 replace TrajectoryBuilderForPixelMatchGsfElectrons.maxCand = 3
 replace TrajectoryBuilderForPixelMatchGsfElectrons.minimumNumberOfHits = 5
 replace TrajectoryBuilderForPixelMatchGsfElectrons.ptCut   = 3.
+
+# Navigation School record
+include "RecoTracker/TkNavigation/data/NavigationSchoolESProducer.cff"
 
 # pixelMatchedElectrons
 include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfElectrons.cfi"
