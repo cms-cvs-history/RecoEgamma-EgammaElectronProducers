@@ -1,6 +1,8 @@
 # MeasurementTracker
 include "RecoTracker/MeasurementDet/data/MeasurementTrackerESProducer.cfi"
 
+# Navigation School record
+include "RecoTracker/TkNavigation/data/NavigationSchoolESProducer.cff"
 
 #pixelMatchedElectrons
 include "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cfi"
