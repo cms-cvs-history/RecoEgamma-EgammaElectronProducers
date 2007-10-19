@@ -5,22 +5,17 @@ module pixelMatchGsfElectrons = PixelMatchGsfElectronProducer {
 
   string hbheModule                = "hbhereco"
   string hbheInstance              = ""
-  string TrackBarrelLabel          = "pixelMatchGsfFitBarrel"
-  string TrackBarrelProducer       = ""
-  string TrackEndcapLabel          = "pixelMatchGsfFitEndcap"
-  string TrackEndcapProducer       = ""
+  string TrackLabel                = "pixelMatchGsfFit"
+  string TrackProducer             = ""
   string SCLBarrelLabel            = "electronPixelSeeds"
   string SCLBarrelProducer         = "correctedHybridSuperClusters"
   string SCLEndcapLabel            = "electronPixelSeeds"
   string SCLEndcapProducer         = "correctedEndcapSuperClustersWithPreshower"
-  string AssocTrTSBarrelLabel      = "pixelMatchGsfFitBarrel"
-  string AssocTrTBarrelProducer    = ""
-  string AssocTrTEndcapLabel       = "pixelMatchGsfFitEndcap"
-  string AssocTrTEndcapProducer    = ""
   string AssocShapeBarrelLabel      = "hybridSuperClusters"
   string AssocShapeBarrelProducer    = "hybridShapeAssoc"
   string AssocShapeEndcapLabel       = "islandBasicClusters"
   string AssocShapeEndcapProducer    = "islandEndcapShapeAssoc"
+
 
   # nested parameter set for TransientInitialStateEstimator
   PSet TransientInitialStateEstimatorParameters = {
