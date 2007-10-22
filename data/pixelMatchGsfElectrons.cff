@@ -14,6 +14,7 @@ replace TrajectoryBuilderForPixelMatchGsfElectrons.propagatorOpposite = "bwdGsfE
 replace TrajectoryBuilderForPixelMatchGsfElectrons.maxCand = 3
 replace TrajectoryBuilderForPixelMatchGsfElectrons.minimumNumberOfHits = 5
 replace TrajectoryBuilderForPixelMatchGsfElectrons.ptCut   = 3.
+replace TrajectoryBuilderForPixelMatchGsfElectrons.intermediateCleaning = false
 
 # Navigation School record
 include "RecoTracker/TkNavigation/data/NavigationSchoolESProducer.cff"
