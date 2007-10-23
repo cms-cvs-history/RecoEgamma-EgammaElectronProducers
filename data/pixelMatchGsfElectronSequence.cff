@@ -1,11 +1,10 @@
-# $Id: pixelMatchGsfElectronSequence.cff,v 1.9 2007/10/15 13:29:45 uberthon Exp $
+# $Id: pixelMatchGsfElectronSequence.cff,v 1.10 2007/10/19 11:44:23 uberthon Exp $
 # create a sequence with all required modules and sources needed to make
-# pixel based Gsf electrons
-# NB: it assumes that ECAL clusters (hybrid) are in the event
-#
+# Gsf electron sequence
 #
 
 # tracking stuff
+include "RecoTracker/TkNavigation/data/NavigationSchoolESProducer.cff"
 include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
 include "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cff"
 
@@ -23,7 +22,7 @@ replace egammaCkfTrackCandidates.SeedProducer ="electronPixelSeeds"
 # sources needed for GSF fit
 include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
 
-# Gsf track fit, version using Seed Association
+# Gsf track fit, version not using Seed Association
 module pixelMatchGsfFit = GsfElectrons from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
 replace pixelMatchGsfFit.src = "egammaCkfTrackCandidates"
 replace pixelMatchGsfFit.Propagator  = "fwdGsfElectronPropagator"
