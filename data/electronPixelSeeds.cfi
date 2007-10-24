@@ -1,29 +1,27 @@
 #
 # module to produce pixel seeds for electrons from super clusters
-# $Id: electronPixelSeeds.cfi,v 1.7 2007/05/10 14:58:21 uberthon Exp $
+# $Id: electronPixelSeeds.cfi,v 1.8 2007/10/23 11:24:54 uberthon Exp $
 # Author:  Ursula Berthon, Claude Charlot
 #
 module electronPixelSeeds= ElectronPixelSeedProducer {
-  double ePhiMin1=-0.125
-  double ePhiMax1=0.075
-  double pPhiMin1=-0.075
-  double pPhiMax1=0.125
-  double pPhiMin2=-0.005
-  double pPhiMax2=0.005
-  double ZMin1=-15.0
-  double ZMax1=15.0
-  double ZMin2=-0.07
-  double ZMax2=0.07
-  double NSigmaInside = 3.
-  bool dynamicPhiRoad = false
+  PSet SeedConfiguration = {
+    double ePhiMin1=-0.125
+    double ePhiMax1=0.075
+    double pPhiMin1=-0.075
+    double pPhiMax1=0.125
+    double pPhiMin2=-0.005
+    double pPhiMax2=0.005
+    double ZMin1=-15.0
+    double ZMax1=15.0
+    double ZMin2=-0.07
+    double ZMax2=0.07
+    double NSigmaInside = 3.
+    bool dynamicPhiRoad = false
+  }
   string superClusterBarrelProducer = "correctedHybridSuperClusters"
   string superClusterBarrelLabel = ""
   string superClusterEndcapProducer = "correctedEndcapSuperClustersWithPreshower"
   string superClusterEndcapLabel = ""
-  PSet SeedConfiguration = {
-    string initialSeedProducer =""
-    string initialSeedLabel =""
-}
   string SeedAlgo =""
 #  PSet MeasurementTrackerParameters = {
 #    string PixelCPE = "PixelCPEfromTrackAngle"
