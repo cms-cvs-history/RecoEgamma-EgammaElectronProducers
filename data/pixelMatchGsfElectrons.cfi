@@ -3,7 +3,7 @@
 
 module pixelMatchGsfElectrons = PixelMatchGsfElectronProducer {
 
-  string ElectronType ="GlobalGsfElectron"
+  string ElectronType =""
   string hbheModule                = "hbhereco"
   string hbheInstance              = ""
   string TrackLabel                = "pixelMatchGsfFit"
