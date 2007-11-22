@@ -4,6 +4,13 @@ include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cfi"
 include "RecoEgamma/EgammaElectronProducers/data/bwdGsfElectronPropagator.cfi"
 
 # TrajectoryBuilder
+
+es_module TrajectoryFilterForPixelMatchGsfElectrons = trajectoryFilterESProducer from "TrackingTools/TrajectoryFiltering/data/TrajectoryFilterESProducer.cfi"
+
+replace TrajectoryFilterForPixelMatchGsfElectrons.ComponentName = "TrajectoryFilterForPixelMatchGsfElectrons"
+replace TrajectoryFilterForPixelMatchGsfElectrons.filterPset.minimumNumberOfHits = 5
+replace TrajectoryFilterForPixelMatchGsfElectrons.filterPset.minPt   = 3.0
+
 es_module TrajectoryBuilderForPixelMatchGsfElectrons = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
 
 replace TrajectoryBuilderForPixelMatchGsfElectrons.ComponentName = "TrajectoryBuilderForPixelMatchGsfElectrons"
@@ -12,9 +19,8 @@ replace TrajectoryBuilderForPixelMatchGsfElectrons.estimator = "gsfElectronChi2"
 replace TrajectoryBuilderForPixelMatchGsfElectrons.propagatorAlong    = "fwdGsfElectronPropagator"
 replace TrajectoryBuilderForPixelMatchGsfElectrons.propagatorOpposite = "bwdGsfElectronPropagator"
 replace TrajectoryBuilderForPixelMatchGsfElectrons.maxCand = 3
-replace TrajectoryBuilderForPixelMatchGsfElectrons.minimumNumberOfHits = 5
-replace TrajectoryBuilderForPixelMatchGsfElectrons.ptCut   = 3.
 replace TrajectoryBuilderForPixelMatchGsfElectrons.intermediateCleaning = false
+replace TrajectoryBuilderForPixelMatchGsfElectrons.trajectoryFilterName = "TrajectoryFilterForPixelMatchGsfElectrons"
 
 # gsfElectrons
 include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfElectrons.cfi"
