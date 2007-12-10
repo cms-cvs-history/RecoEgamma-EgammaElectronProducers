@@ -1,7 +1,0 @@
-# Looser chi2 estimator for electron trajectory building 
-es_module gsfElectronChi2 = Chi2MeasurementEstimatorESProducer
-  {
-    string ComponentName = "gsfElectronChi2"
-    double MaxChi2 = 100000.
-    double nSigma = 3.
-  }

@@ -18,12 +18,6 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   string AssocShapeEndcapProducer    = "islandEndcapShapeAssoc"
 
 
-  # nested parameter set for TransientInitialStateEstimator
-  PSet TransientInitialStateEstimatorParameters = {
-     string propagatorAlongTISE    = "PropagatorWithMaterial"
-     string propagatorOppositeTISE = "PropagatorWithMaterialOpposite"
-  }
-
   # electron preselection parameters
   double maxEOverPBarrel = 3.
   double maxEOverPEndcaps = 5.
@@ -36,6 +30,14 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   double EtCut = 5.    # en Gev
   bool highPtPreselection = false   
   double highPtMin = 150.
+
+  # nested parameter set for TransientInitialStateEstimator
+  #FIXME!
+  PSet TransientInitialStateEstimatorParameters = {
+     string propagatorAlongTISE    = "PropagatorWithMaterial"
+     string propagatorOppositeTISE = "PropagatorWithMaterialOpposite"
+  }
+
   
 }
 

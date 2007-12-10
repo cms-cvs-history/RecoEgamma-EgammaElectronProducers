@@ -1,0 +1,60 @@
+# CKFTrackCandidateMaker
+include "RecoTracker/CkfPattern/data/CkfTrackCandidates.cff"
+module egammaCkfTrackCandidates = ckfTrackCandidates from "RecoTracker/CkfPattern/data/CkfTrackCandidates.cfi"
+replace egammaCkfTrackCandidates.SeedProducer ="electronPixelSeeds"
+replace egammaCkfTrackCandidates.TrajectoryBuilder = "TrajectoryBuilderForPixelMatchGsfElectrons"
+replace egammaCkfTrackCandidates.SeedLabel             = ""
+replace egammaCkfTrackCandidates.TrajectoryCleaner     = "TrajectoryCleanerBySharedHits"
+replace egammaCkfTrackCandidates.NavigationSchool      = "SimpleNavigationSchool"
+replace egammaCkfTrackCandidates.RedundantSeedCleaner  = "CachingSeedCleanerBySharedInput"
+#replace egammaCkfTrackCandidates.TransientInitialStateEstimatorParameters =
+#      {
+#         string propagatorAlongTISE    = "PropagatorWithMaterial"
+#         string propagatorOppositeTISE = "PropagatorWithMaterialOpposite"
+#      }	
+
+# TrajectoryBuilder
+es_module TrajectoryBuilderForPixelMatchGsfElectrons = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.ComponentName = "TrajectoryBuilderForPixelMatchGsfElectrons"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.trajectoryFilterName = "TrajectoryFilterForPixelMatchGsfElectrons"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.maxCand = 3
+replace TrajectoryBuilderForPixelMatchGsfElectrons.intermediateCleaning = false
+replace TrajectoryBuilderForPixelMatchGsfElectrons.propagatorAlong    = "fwdGsfElectronPropagator"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.propagatorOpposite = "bwdGsfElectronPropagator"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.estimator = "gsfElectronChi2"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.MeasurementTrackerName = ""
+replace TrajectoryBuilderForPixelMatchGsfElectrons.lostHitPenalty       = 30.
+replace TrajectoryBuilderForPixelMatchGsfElectrons.alwaysUseInvalidHits = true
+replace TrajectoryBuilderForPixelMatchGsfElectrons.TTRHBuilder          = "WithTrackAngle"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.updator              = "KFUpdator"
+
+
+# Electron propagators and estimators
+# Looser chi2 estimator for electron trajectory building
+es_module gsfElectronChi2 = Chi2MeasurementEstimator from "TrackingTools/KalmanUpdators/data/Chi2MeasurementEstimatorESProducer.cfi"
+replace gsfElectronChi2.ComponentName = "gsfElectronChi2"
+replace gsfElectronChi2.MaxChi2 = 100000.
+replace gsfElectronChi2.nSigma = 3.
+
+# "backward" propagator for electrons
+include "RecoEgamma/EgammaElectronProducers/data/bwdGsfElectronPropagator.cff"
+# "forward" propagator for electrons
+include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cff"
+
+# TrajectoryFilter
+include "TrackingTools/TrajectoryFiltering/data/TrajectoryFilter.cff"
+es_module TrajectoryFilterForPixelMatchGsfElectrons = trajectoryFilterESProducer from "TrackingTools/TrajectoryFiltering/data/TrajectoryFilterESProducer.cfi"
+replace TrajectoryFilterForPixelMatchGsfElectrons.ComponentName = "TrajectoryFilterForPixelMatchGsfElectrons"
+replace TrajectoryFilterForPixelMatchGsfElectrons.filterPset = {
+   string ComponentType = "CkfBaseTrajectoryFilter"
+   double chargeSignificance = -1
+   int32 maxLostHits = 1
+   int32 maxConsecLostHits = 1
+   int32 maxNumberOfHits = -1
+   int32 minimumNumberOfHits = 5  
+   double minPt = 3.0          
+   double nSigmaMinPt = 5.0
+   int32 minHitsMinPt = -1
+}
+
+

@@ -1,0 +1,11 @@
+# Gsf track fit for GsfElectrons
+include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cff"
+include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
+
+module pixelMatchGsfFit = GsfElectrons from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
+replace pixelMatchGsfFit.src = "egammaCkfTrackCandidates"
+replace pixelMatchGsfFit.Propagator  = "fwdGsfElectronPropagator"
+replace pixelMatchGsfFit.Fitter = "GsfElectronFittingSmoother"
+replace pixelMatchGsfFit.TTRHBuilder       =   "WithTrackAngle"
+replace pixelMatchGsfFit.TrajectoryInEvent = false
+replace pixelMatchGsfFit.producer = ""
