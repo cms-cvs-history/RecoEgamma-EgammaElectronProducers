@@ -1,0 +1,93 @@
+# $Id: globalGsfElectronSequence.cff,v 1.1 2007/10/30 14:52:42 sani Exp $
+# create a sequence with all required modules and sources needed to make
+
+# modules to make seeds, tracks and electrons
+include "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cff"
+
+module electronPixelSeedsForGlobalGsfElectrons = electronPixelSeeds from "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cfi"
+replace electronPixelSeedsForGlobalGsfElectrons.SeedAlgo = "FilteredSeed"
+replace electronPixelSeedsForGlobalGsfElectrons.SeedConfiguration = {
+    string initialSeedProducer = "globalMixedSeeds"
+    string initialSeedLabel    = ""
+    double seedPt              = 0.
+    double seedDr              = 0.3
+    double seedDPhi            = 0.3
+    double seedDEta            = 0.03
+} 
+
+# TrajectoryBuilder
+include "RecoEgamma/EgammaElectronProducers/data/gsfElectronChi2.cfi"
+# "backward" propagator for electrons
+include "RecoEgamma/EgammaElectronProducers/data/bwdGsfElectronPropagator.cff"
+# "forward" propagator for electrons
+include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cff"
+
+es_module TrajectoryBuilderForGlobalGsfElectrons = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
+replace TrajectoryBuilderForGlobalGsfElectrons.ComponentName              = "TrajectoryBuilderForGlobalGsfElectrons"
+replace TrajectoryBuilderForGlobalGsfElectrons.maxCand                    = 3
+replace TrajectoryBuilderForGlobalGsfElectrons.intermediateCleaning       = false
+replace TrajectoryBuilderForGlobalGsfElectrons.propagatorAlong            = "fwdGsfElectronPropagator"
+replace TrajectoryBuilderForGlobalGsfElectrons.propagatorOpposite         = "bwdGsfElectronPropagator"
+replace TrajectoryBuilderForGlobalGsfElectrons.estimator                  = "gsfElectronChi2ForGlobalGsfElectrons"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.MeasurementTrackerName = ""
+replace TrajectoryBuilderForPixelMatchGsfElectrons.lostHitPenalty         = 30.
+replace TrajectoryBuilderForPixelMatchGsfElectrons.alwaysUseInvalidHits   = true
+replace TrajectoryBuilderForPixelMatchGsfElectrons.TTRHBuilder            = "WithTrackAngle"
+replace TrajectoryBuilderForPixelMatchGsfElectrons.updator                = "KFUpdator"
+
+
+# Electron propagators and estimators
+# Looser chi2 estimator for electron trajectory building
+es_module gsfElectronChi2ForGlobalGsfElectrons = Chi2MeasurementEstimator from "TrackingTools/KalmanUpdators/data/Chi2MeasurementEstimatorESProducer.cfi"
+replace gsfElectronChi2ForGlobalGsfElectrons.ComponentName = "gsfElectronChi2ForGlobalGsfElectrons"
+replace gsfElectronChi2ForGlobalGsfElectrons.MaxChi2 = 100000.
+replace gsfElectronChi2ForGlobalGsfElectrons.nSigma = 3.
+
+# CKFTrackCandidateMaker
+include "RecoTracker/CkfPattern/data/CkfTrackCandidates.cff"
+module egammaCkfTrackCandidatesForGlobalGsfElectrons = ckfTrackCandidates from "RecoTracker/CkfPattern/data/CkfTrackCandidates.cfi"
+replace egammaCkfTrackCandidatesForGlobalGsfElectrons.TrajectoryBuilder     = "TrajectoryBuilderForGlobalGsfElectrons"
+replace egammaCkfTrackCandidatesForGlobalGsfElectrons.SeedProducer          = "electronPixelSeedsForGlobalGsfElectrons"
+replace egammaCkfTrackCandidatesForGlobalGsfElectrons.SeedLabel             = ""
+replace egammaCkfTrackCandidatesForGlobalGsfElectrons.TrajectoryCleaner     = "TrajectoryCleanerBySharedHits"
+replace egammaCkfTrackCandidatesForGlobalGsfElectrons.NavigationSchool      = "SimpleNavigationSchool"
+replace egammaCkfTrackCandidatesForGlobalGsfElectrons.RedundantSeedCleaner  = "CachingSeedCleanerBySharedInput"
+
+# TrajectoryFilter
+include "TrackingTools/TrajectoryFiltering/data/TrajectoryFilter.cff"
+es_module TrajectoryFilterForGlobalGsfElectrons = trajectoryFilterESProducer from "TrackingTools/TrajectoryFiltering/data/TrajectoryFilterESProducer.cfi"
+replace TrajectoryFilterForGlobalGsfElectrons.ComponentName = "TrajectoryFilterForGlobalGsfElectrons"
+replace TrajectoryFilterForGlobalGsfElectrons.filterPset = {
+   string ComponentType      = "CkfBaseTrajectoryFilter"
+   double chargeSignificance = -1
+   int32 maxLostHits         = 1
+   int32 maxConsecLostHits   = 1
+   int32 maxNumberOfHits     = -1
+   int32 minimumNumberOfHits = 3  
+   double minPt              = 3.0          
+   double nSigmaMinPt        = 5.0
+   int32 minHitsMinPt        = -1
+}
+
+# sources needed for GSF fit
+include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
+include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cff"
+# Gsf track fit, version not using Seed Association
+module pixelMatchGsfFitForGlobalGsfElectrons = GsfElectrons from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
+replace pixelMatchGsfFitForGlobalGsfElectrons.src               = "egammaCkfTrackCandidatesForGlobalGsfElectrons"
+replace pixelMatchGsfFitForGlobalGsfElectrons.Propagator        = "fwdGsfElectronPropagator"
+replace pixelMatchGsfFitForGlobalGsfElectrons.Fitter            = "GsfElectronFittingSmoother"
+replace pixelMatchGsfFitForGlobalGsfElectrons.TTRHBuilder       = "WithTrackAngle"
+replace pixelMatchGsfFitForGlobalGsfElectrons.TrajectoryInEvent = false
+replace pixelMatchGsfFitForGlobalGsfElectrons.producer          = ""
+
+# module to make electrons
+include "RecoEgamma/EgammaElectronProducers/data/globalGsfElectrons.cff"
+
+sequence globalGsfElectronSequence = {
+        electronPixelSeedsForGlobalGsfElectrons,
+        egammaCkfTrackCandidatesForGlobalGsfElectrons,
+        pixelMatchGsfFitForGlobalGsfElectrons,
+        globalGsfElectrons
+    }
+    
