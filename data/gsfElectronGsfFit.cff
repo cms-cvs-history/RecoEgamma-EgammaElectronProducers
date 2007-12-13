@@ -2,7 +2,7 @@
 include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cff"
 include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
 
-module pixelMatchGsfFit = GsfElectrons from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
+module pixelMatchGsfFit =GsfGlobalElectronTest from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
 replace pixelMatchGsfFit.src = "egammaCkfTrackCandidates"
 replace pixelMatchGsfFit.Propagator  = "fwdGsfElectronPropagator"
 replace pixelMatchGsfFit.Fitter = "GsfElectronFittingSmoother"
