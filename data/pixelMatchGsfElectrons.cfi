@@ -27,7 +27,6 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   double maxHOverE = 0.2
   double maxDeltaEta = 0.02
   double maxDeltaPhi = 0.1
-  double EtCut = 5.    # en Gev
   bool highPtPreselection = false   
   double highPtMin = 150.
 
