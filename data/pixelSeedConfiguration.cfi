@@ -1,0 +1,18 @@
+block electronPixelSeedConfiguration = { 
+    
+    double ePhiMin1 = -0.125
+    double ePhiMax1 =  0.075
+    double pPhiMin1 = -0.075
+    double pPhiMax1 =  0.125
+    double pPhiMin2 = -0.005
+    double pPhiMax2 =  0.005
+    double ZMin1    = -15.0
+    double ZMax1    =  15.0
+    double ZMin2    = -0.07
+    double ZMax2    =  0.07
+    bool dynamicPhiRoad = false
+    double SCEtCut = 5.
+    
+}
+
+
