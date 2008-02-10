@@ -1,4 +1,4 @@
-# $Id: globalGsfElectronSequence.cff,v 1.1 2007/10/30 14:52:42 sani Exp $
+# $Id: globalGsfElectronSequence.cff,v 1.1 2007/12/12 10:38:29 sani Exp $
 # create a sequence with all required modules and sources needed to make
 
 # modules to make seeds, tracks and electrons
@@ -16,7 +16,7 @@ replace electronPixelSeedsForGlobalGsfElectrons.SeedConfiguration = {
 } 
 
 # TrajectoryBuilder
-include "RecoEgamma/EgammaElectronProducers/data/gsfElectronChi2.cfi"
+#include "RecoEgamma/EgammaElectronProducers/data/gsfElectronChi2.cfi"
 # "backward" propagator for electrons
 include "RecoEgamma/EgammaElectronProducers/data/bwdGsfElectronPropagator.cff"
 # "forward" propagator for electrons
@@ -29,12 +29,6 @@ replace TrajectoryBuilderForGlobalGsfElectrons.intermediateCleaning       = fals
 replace TrajectoryBuilderForGlobalGsfElectrons.propagatorAlong            = "fwdGsfElectronPropagator"
 replace TrajectoryBuilderForGlobalGsfElectrons.propagatorOpposite         = "bwdGsfElectronPropagator"
 replace TrajectoryBuilderForGlobalGsfElectrons.estimator                  = "gsfElectronChi2ForGlobalGsfElectrons"
-replace TrajectoryBuilderForPixelMatchGsfElectrons.MeasurementTrackerName = ""
-replace TrajectoryBuilderForPixelMatchGsfElectrons.lostHitPenalty         = 30.
-replace TrajectoryBuilderForPixelMatchGsfElectrons.alwaysUseInvalidHits   = true
-replace TrajectoryBuilderForPixelMatchGsfElectrons.TTRHBuilder            = "WithTrackAngle"
-replace TrajectoryBuilderForPixelMatchGsfElectrons.updator                = "KFUpdator"
-
 
 # Electron propagators and estimators
 # Looser chi2 estimator for electron trajectory building
@@ -70,10 +64,10 @@ replace TrajectoryFilterForGlobalGsfElectrons.filterPset = {
 }
 
 # sources needed for GSF fit
-include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
+#include "TrackingTools/GsfTracking/data/GsfElectronFit.cff"
 include "RecoEgamma/EgammaElectronProducers/data/fwdGsfElectronPropagator.cff"
 # Gsf track fit, version not using Seed Association
-module pixelMatchGsfFitForGlobalGsfElectrons = GsfElectrons from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
+module pixelMatchGsfFitForGlobalGsfElectrons = GsfGlobalElectronTest from "TrackingTools/GsfTracking/data/GsfElectronFit.cfi"
 replace pixelMatchGsfFitForGlobalGsfElectrons.src               = "egammaCkfTrackCandidatesForGlobalGsfElectrons"
 replace pixelMatchGsfFitForGlobalGsfElectrons.Propagator        = "fwdGsfElectronPropagator"
 replace pixelMatchGsfFitForGlobalGsfElectrons.Fitter            = "GsfElectronFittingSmoother"

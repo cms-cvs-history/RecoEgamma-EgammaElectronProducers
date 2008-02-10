@@ -1,7 +1,7 @@
 # produce electrons based on matched pixel hits with gsf fit
 #
 
-module globalGsfElectrons = PixelMatchGsfElectronProducer {
+module globalGsfElectrons = GsfElectronProducer {
 
   string ElectronType              = "GlobalGsfElectron"
   string hbheModule                = "hbhereco"
