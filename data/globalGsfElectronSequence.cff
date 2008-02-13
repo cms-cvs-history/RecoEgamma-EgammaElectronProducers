@@ -1,4 +1,4 @@
-# $Id: globalGsfElectronSequence.cff,v 1.1 2007/12/12 10:38:29 sani Exp $
+# $Id: globalGsfElectronSequence.cff,v 1.2 2008/02/10 20:05:54 mangano Exp $
 # create a sequence with all required modules and sources needed to make
 
 # modules to make seeds, tracks and electrons
@@ -11,8 +11,8 @@ replace electronPixelSeedsForGlobalGsfElectrons.SeedConfiguration = {
     string initialSeedLabel    = ""
     double seedPt              = 0.
     double seedDr              = 0.3
-    double seedDPhi            = 0.3
-    double seedDEta            = 0.03
+    double seedDPhi            = 0.1
+    double seedDEta            = 0.025
 } 
 
 # TrajectoryBuilder
