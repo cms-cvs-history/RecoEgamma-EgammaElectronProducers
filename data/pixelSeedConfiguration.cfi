@@ -1,32 +1,29 @@
 block electronPixelSeedConfiguration = { 
     
 # general
-        double PhiMin2  =-0.002
-        double PhiMax2  = 0.002
-	double z2MinB   =-0.09
-	double z2MaxB   = 0.09
-	double z2MinF   =-0.15
-	double z2MaxF   = 0.15
+        double PhiMin2  = -0.002
+        double PhiMax2  =  0.002
+	double z2MinB   = -0.09
+	double z2MaxB   =  0.09
+	double z2MinF   = -0.15
+	double z2MaxF   =  0.15
 
         double SCEtCut = 5.
 
         bool dynamicPhiRoad = true
 
 # special for ForwardMeasurementEstimator
-	double rMin=-0.2
-        double rMax = 0.2
-
+	double rMin = -0.2
+        double rMax =  0.2
 
 # dynamicPhiRoad
-        double LowPtThreshold =9.
-        double HighPtThreshold=35.
-        double SizeWindowENeg=0.675
-        double DeltaPhi1Low = 0.32
-        double DeltaPhi2Low = 0.01
-        double DeltaPhi1High =0.08
-        double DeltaPhi2High =0.004
+        double LowPtThreshold   = 5.
+        double HighPtThreshold  = 35.
+        double SizeWindowENeg   = 0.675
+        double DeltaPhi1Low     = 0.23
+        double DeltaPhi1High    = 0.08
+        double DeltaPhi2        = 0.004
  
-
 # non dynamic (overwritten in case of dynamicPhiRoad)
        double ePhiMin1 = -0.125
        double ePhiMax1 =  0.075
