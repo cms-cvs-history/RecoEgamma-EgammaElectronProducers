@@ -29,7 +29,8 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   double maxDeltaPhi = 0.1
   bool highPtPreselection = false   
   double highPtMin = 150.
-  bool applyEtaCorrection = true
+
+  bool applyEtaCorrection = false
 
   # nested parameter set for TransientInitialStateEstimator
   #FIXME!

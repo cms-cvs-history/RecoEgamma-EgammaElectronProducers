@@ -12,6 +12,8 @@ block electronPixelSeedConfiguration = {
 
         bool dynamicPhiRoad = true
 
+        bool searchInTIDTEC = false   # be able to drop research for first hit in TID and TEC
+
 # special for ForwardMeasurementEstimator
 	double rMin = -0.2
         double rMax =  0.2
