@@ -30,5 +30,4 @@ replace egammaCTFFinalFitWithMaterial.Propagator = "PropagatorWithMaterial"
 replace egammaCTFFinalFitWithMaterial.alias = "egammaCTFWithMaterialTracks"
 replace egammaCTFFinalFitWithMaterial.TTRHBuilder = "WithTrackAngle"
 replace egammaCTFFinalFitWithMaterial.TrajectoryInEvent = false
-replace egammaCTFFinalFitWithMaterial.producer = ""
 
