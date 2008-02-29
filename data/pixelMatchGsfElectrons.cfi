@@ -17,12 +17,11 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   string AssocShapeEndcapLabel       = "islandBasicClusters"
   string AssocShapeEndcapProducer    = "islandEndcapShapeAssoc"
 
-
   # electron preselection parameters
-  double maxEOverPBarrel = 3.
-  double maxEOverPEndcaps = 5.
-  double minEOverPBarrel = 0.35
-  double minEOverPEndcaps = 0.35
+  double maxEOverPBarrel = 10000.
+  double maxEOverPEndcaps = 10000.
+  double minEOverPBarrel = 0.0
+  double minEOverPEndcaps = 0.0
   double maxDeltaEta = 0.02
   double maxDeltaPhi = 0.1
   bool highPtPreselection = false   
