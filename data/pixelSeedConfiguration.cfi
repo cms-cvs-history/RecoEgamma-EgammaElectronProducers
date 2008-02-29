@@ -5,18 +5,16 @@ block electronPixelSeedConfiguration = {
         double PhiMax2  =  0.002
 	double z2MinB   = -0.09
 	double z2MaxB   =  0.09
-	double z2MinF   = -0.15
-	double z2MaxF   =  0.15
+	double r2MinF   = -0.15
+	double r2MaxF   =  0.15
+	double rMinI    = -0.2   # intermediate region SC in EB and hits in PXF
+        double rMaxI    =  0.2   # intermediate region SC in EB and hits in PXF
 
         double SCEtCut = 5.
 
         bool dynamicPhiRoad = true
 
-        bool searchInTIDTEC = true   # be able to drop research for first hit in TID and TEC
-
-# special for ForwardMeasurementEstimator
-	double rMin = -0.2
-        double rMax =  0.2
+        bool searchInTIDTEC = true   #  possibility to inhibit extended forward coverage
 
 # dynamicPhiRoad
         double LowPtThreshold   = 5.
