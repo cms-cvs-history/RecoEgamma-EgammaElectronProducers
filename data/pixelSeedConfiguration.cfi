@@ -5,12 +5,11 @@ block electronPixelSeedConfiguration = {
         double PhiMax2  =  0.002
 	double z2MinB   = -0.09
 	double z2MaxB   =  0.09
-	double r2MinF   = -0.15
-	double r2MaxF   =  0.15
+	double r2MinF   = -0.15  
+	double r2MaxF   =  0.15  
 	double rMinI    = -0.2   # intermediate region SC in EB and hits in PXF
         double rMaxI    =  0.2   # intermediate region SC in EB and hits in PXF
 
-        double SCEtCut = 5.
 
         bool dynamicPhiRoad = true
 
@@ -25,9 +24,15 @@ block electronPixelSeedConfiguration = {
         double DeltaPhi2        = 0.004
  
 # non dynamic (overwritten in case of dynamicPhiRoad)
-       double ePhiMin1 = -0.125
-       double ePhiMax1 =  0.075
-       double pPhiMin1 = -0.075
-       double pPhiMax1 =  0.125
+        double ePhiMin1 = -0.125
+        double ePhiMax1 =  0.075
+        double pPhiMin1 = -0.075
+        double pPhiMax1 =  0.125
 
+# for filtering
+       string hbheModule                = "hbhereco"
+       string hbheInstance              = ""
+       double hOverEConeSize = 0.1
+       double maxHOverE = 0.2
+       double SCEtCut = 5.
 }
