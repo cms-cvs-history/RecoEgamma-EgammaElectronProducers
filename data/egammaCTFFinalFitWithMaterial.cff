@@ -24,7 +24,7 @@ include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder
 
 
 module egammaCTFFinalFitWithMaterial = ctfWithMaterialTracks from "RecoTracker/TrackProducer/data/CTFFinalFitWithMaterial.cfi"
-replace egammaCTFFinalFitWithMaterial.src = "siStripElectrons"
+replace egammaCTFFinalFitWithMaterial.src = siStripElectrons
 replace egammaCTFFinalFitWithMaterial.Fitter = "KFFittingSmoother"
 replace egammaCTFFinalFitWithMaterial.Propagator = "PropagatorWithMaterial"
 replace egammaCTFFinalFitWithMaterial.alias = "egammaCTFWithMaterialTracks"
