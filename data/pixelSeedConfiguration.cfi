@@ -32,7 +32,6 @@ block electronPixelSeedConfiguration = {
 # for filtering
        string hbheModule                = "hbhereco"
        string hbheInstance              = ""
-       double hOverEConeSize = 0.1
        double maxHOverE = 0.2
        double SCEtCut = 5.
 }
