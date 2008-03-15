@@ -4,18 +4,12 @@
 module pixelMatchGsfElectrons = GsfElectronProducer {
 
   string ElectronType =""
-  string hbheModule                = "hbhereco"
-  string hbheInstance              = ""
-  string TrackLabel                = "pixelMatchGsfFit"
-  string TrackProducer             = ""
-  string SCLBarrelLabel            = "electronPixelSeeds"
-  string SCLBarrelProducer         = "correctedHybridSuperClusters"
-  string SCLEndcapLabel            = "electronPixelSeeds"
-  string SCLEndcapProducer         = "correctedEndcapSuperClustersWithPreshower"
-  string AssocShapeBarrelLabel      = "hybridSuperClusters"
-  string AssocShapeBarrelProducer    = "hybridShapeAssoc"
-  string AssocShapeEndcapLabel       = "islandBasicClusters"
-  string AssocShapeEndcapProducer    = "islandEndcapShapeAssoc"
+  InputTag hcalRecHits = "hbhereco::"
+  InputTag tracks = "pixelMatchGsfFit::"
+  InputTag barrelSuperClusters = "correctedHybridSuperClusters:electronPixelSeeds:"
+  InputTag endcapSuperClusters = "correctedEndcapSuperClustersWithPreshower:electronPixelSeeds:"
+  InputTag barrelClusterShapes = "hybridSuperClusters:hybridShapeAssoc:"
+  InputTag endcapClusterShapes = "islandBasicClusters:islandEndcapShapeAssoc:"
 
   # electron preselection parameters
   double maxEOverPBarrel = 10000.
@@ -27,7 +21,8 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   bool highPtPreselection = false   
   double highPtMin = 150.
 
-  bool applyEtaCorrection = false
+#  bool applyEtaCorrection = false
+  bool applyEtaCorrection = true
 
   # nested parameter set for TransientInitialStateEstimator
   #FIXME!

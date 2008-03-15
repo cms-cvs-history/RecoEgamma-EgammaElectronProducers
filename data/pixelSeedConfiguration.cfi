@@ -30,8 +30,7 @@ block electronPixelSeedConfiguration = {
         double pPhiMax1 =  0.125
 
 # for filtering
-       string hbheModule                = "hbhereco"
-       string hbheInstance              = ""
+       InputTag hcalRecHits = "hbhereco::"
        double maxHOverE = 0.2
        double SCEtCut = 5.
 }

@@ -1,4 +1,4 @@
-# $Id: globalGsfElectronSequence.cff,v 1.2 2008/02/10 20:05:54 mangano Exp $
+# $Id: globalGsfElectronSequence.cff,v 1.3 2008/02/13 04:42:58 mangano Exp $
 # create a sequence with all required modules and sources needed to make
 
 # modules to make seeds, tracks and electrons
@@ -7,8 +7,7 @@ include "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cff"
 module electronPixelSeedsForGlobalGsfElectrons = electronPixelSeeds from "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cfi"
 replace electronPixelSeedsForGlobalGsfElectrons.SeedAlgo = "FilteredSeed"
 replace electronPixelSeedsForGlobalGsfElectrons.SeedConfiguration = {
-    string initialSeedProducer = "globalMixedSeeds"
-    string initialSeedLabel    = ""
+    InputTag initialSeeds = "globalMixedSeeds::"
     double seedPt              = 0.
     double seedDr              = 0.3
     double seedDPhi            = 0.1
