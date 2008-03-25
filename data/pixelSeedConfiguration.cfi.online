@@ -13,8 +13,6 @@ block electronPixelSeedConfiguration = {
         double SCEtCut = 5.
 
         bool dynamicPhiRoad = false  # online uses non dynamic road
-        bool fromTrackerSeeds = false
-        InputTag initialSeeds = "globalMixedSeeds::"
         bool searchInTIDTEC = true   # possibility to inhibit extended forward coverage
 
 # dynamicPhiRoad
@@ -32,7 +30,7 @@ block electronPixelSeedConfiguration = {
        double pPhiMax1 =  0.025
 
 # for filtering
-       InputTag hcalrecHits = "hbhereco::"
+       InputTag hcalrecHits = hbhereco
        double hOverEConeSize = 0.1
        double maxHOverE = 0.2
        double SCEtCut = 5.

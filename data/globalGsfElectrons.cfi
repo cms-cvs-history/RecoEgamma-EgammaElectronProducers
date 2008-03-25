@@ -4,12 +4,12 @@
 module globalGsfElectrons = GsfElectronProducer {
 
   string ElectronType              = "GlobalGsfElectron"
-  InputTag tracks = "pixelMatchGsfFitForGlobalGsfElectrons::"
-  InputTag hcalrecHits = "hbhereco::"
-  InputTag barrelSuperClusters = "correctedHybridSuperClusters:electronPixelSeeds:"
-  InputTag endcapSuperClusters = "correctedEndcapSuperClustersWithPreshower:electronPixelSeeds:"
-  InputTag barrelClusterShapes = "hybridShapeAssoc:hybridSuperClusters:"
-  InputTag endcapClusterShapes = "islandEndcapShapeAssoc:islandBasicClusters:"
+  InputTag tracks = pixelMatchGsfFitForGlobalGsfElectrons
+  InputTag hcalrecHits = hbhereco
+  InputTag barrelSuperClusters = correctedHybridSuperClusters:electronPixelSeeds
+  InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower:electronPixelSeeds
+  InputTag barrelClusterShapes = hybridShapeAssoc:hybridSuperClusters
+  InputTag endcapClusterShapes = islandEndcapShapeAssoc:islandBasicClusters
 
   # nested parameter set for TransientInitialStateEstimator
   PSet TransientInitialStateEstimatorParameters = {

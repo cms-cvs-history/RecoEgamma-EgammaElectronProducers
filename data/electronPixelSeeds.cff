@@ -13,8 +13,5 @@ include "RecoTracker/TkNavigation/data/NavigationSchoolESProducer.cff"
 include "RecoTracker/MeasurementDet/data/MeasurementTrackerESProducer.cfi"
 include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
-# module to make track seeds
-include "RecoTracker/TkSeedGenerator/data/GlobalMixedSeeds.cff"
-
 # seed module 
 include "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cfi"

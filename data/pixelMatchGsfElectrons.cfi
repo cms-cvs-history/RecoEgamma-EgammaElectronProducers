@@ -4,12 +4,12 @@
 module pixelMatchGsfElectrons = GsfElectronProducer {
 
   string ElectronType =""
-  InputTag hcalRecHits = "hbhereco::"
-  InputTag tracks = "pixelMatchGsfFit::"
-  InputTag barrelSuperClusters = "correctedHybridSuperClusters:electronPixelSeeds:"
-  InputTag endcapSuperClusters = "correctedEndcapSuperClustersWithPreshower:electronPixelSeeds:"
-  InputTag barrelClusterShapes = "hybridSuperClusters:hybridShapeAssoc:"
-  InputTag endcapClusterShapes = "islandBasicClusters:islandEndcapShapeAssoc:"
+  InputTag hcalRecHits = hbhereco
+  InputTag tracks = pixelMatchGsfFit
+  InputTag barrelSuperClusters = correctedHybridSuperClusters:electronPixelSeeds
+  InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower:electronPixelSeeds
+  InputTag barrelClusterShapes = hybridSuperClusters:hybridShapeAssoc
+  InputTag endcapClusterShapes = islandBasicClusters:islandEndcapShapeAssoc
 
   # electron preselection parameters
   double maxEOverPBarrel = 10000.

@@ -16,7 +16,6 @@ include "RecoEgamma/EgammaElectronProducers/data/gsfElectronGsfFit.cff"
 include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfElectrons.cff"
 
 sequence pixelMatchGsfElectronSequence = {
-                                        globalMixedSeeds,  # FIXME
                                         electronPixelSeeds,
                                         egammaCkfTrackCandidates,
                                         pixelMatchGsfFit,
