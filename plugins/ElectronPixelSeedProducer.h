@@ -43,9 +43,11 @@ class ElectronPixelSeedProducer : public edm::EDProducer
 
   void filterClusters(const edm::Handle<reco::SuperClusterCollection> &superClusters,HBHERecHitMetaCollection* mhbhe, reco::SuperClusterRefVector &sclRefs);
 
-  edm::InputTag superClusters_[2];
-  edm::InputTag hcalRecHits_;
-  
+  std::string instanceName_[2];
+  std::string label_[2];
+  std::string hbheLabel_;
+  std::string hbheInstanceName_;
+
   const edm::ParameterSet conf_;
   ElectronSeedGenerator *matcher_;
   std::string algo_;
@@ -56,7 +58,7 @@ class ElectronPixelSeedProducer : public edm::EDProducer
   edm::ESHandle<CaloGeometry>       theCaloGeom;
   HoECalculator calc_;
 
-  // maximum H/E where H is the Hcal energy in tower behind the seed cluster eta-phi position 
+  // maximum H/E where H is the Hcal energy inside the cone centered on the seed cluster eta-phi position 
   double maxHOverE_; 
   double SCEtCut_;
 
