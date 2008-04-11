@@ -8,8 +8,6 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   InputTag tracks = pixelMatchGsfFit
   InputTag barrelSuperClusters = correctedHybridSuperClusters:electronPixelSeeds
   InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower:electronPixelSeeds
-  InputTag barrelClusterShapes = hybridSuperClusters:hybridShapeAssoc
-  InputTag endcapClusterShapes = islandBasicClusters:islandEndcapShapeAssoc
 
   # electron preselection parameters
   double maxEOverPBarrel = 10000.

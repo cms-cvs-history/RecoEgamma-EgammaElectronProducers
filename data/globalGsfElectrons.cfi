@@ -8,8 +8,6 @@ module globalGsfElectrons = GsfElectronProducer {
   InputTag hcalrecHits = hbhereco
   InputTag barrelSuperClusters = correctedHybridSuperClusters:electronPixelSeeds
   InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower:electronPixelSeeds
-  InputTag barrelClusterShapes = hybridShapeAssoc:hybridSuperClusters
-  InputTag endcapClusterShapes = islandEndcapShapeAssoc:islandBasicClusters
 
   # nested parameter set for TransientInitialStateEstimator
   PSet TransientInitialStateEstimatorParameters = {
