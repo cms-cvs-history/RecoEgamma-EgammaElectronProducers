@@ -7,15 +7,14 @@ block electronPixelSeedConfiguration = {
 	double z2MaxB   =  0.09
 	double r2MinF   = -0.15  
 	double r2MaxF   =  0.15  
-	double rMinI    = -0.2   # intermediate region SC in EB and hits in PXF
-        double rMaxI    =  0.2   # intermediate region SC in EB and hits in PXF
-
+	double rMinI    = -0.2   # intermediate region SC in EB and 2nd hits in PXF
+        double rMaxI    =  0.2   # intermediate region SC in EB and 2nd hits in PXF
 
         bool dynamicPhiRoad = true
         bool fromTrackerSeeds = false
         InputTag initialSeeds = globalMixedSeeds
         bool searchInTIDTEC = true   #  possibility to inhibit extended forward coverage
-
+	
 # dynamicPhiRoad
         double LowPtThreshold   = 5.
         double HighPtThreshold  = 35.
