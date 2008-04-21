@@ -12,7 +12,7 @@ block electronPixelSeedConfiguration = {
 
         bool dynamicPhiRoad = true
         bool fromTrackerSeeds = true
-        bool preFilteredSeeds =false
+        bool preFilteredSeeds = true
         InputTag initialSeeds = globalMixedSeeds
         bool searchInTIDTEC = true   #  possibility to inhibit extended forward coverage
 	
