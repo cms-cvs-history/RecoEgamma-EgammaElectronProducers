@@ -1,6 +1,6 @@
 #
 # module to produce pixel seeds for electrons from super clusters
-# $Id: electronPixelSeeds.cfi,v 1.13 2008/03/15 14:34:59 charlot Exp $
+# $Id: electronPixelSeeds.cfi,v 1.15 2008/04/08 16:38:53 uberthon Exp $
 # Author:  Ursula Berthon, Claude Charlot
 #
 include "RecoEgamma/EgammaElectronProducers/data/pixelSeedConfiguration.cfi"
@@ -8,8 +8,24 @@ include "RecoEgamma/EgammaElectronProducers/data/pixelSeedConfiguration.cfi"
 module electronPixelSeeds= ElectronPixelSeedProducer {
   PSet SeedConfiguration = {
         using electronPixelSeedConfiguration
+# eta-phi-region
+    PSet RegionPSet = {
+        double ptMin = 1.5
+        double originRadius = 0.2
+        double originHalfLength = 15.0
+        double deltaEtaRegion = 0.3
+        double deltaPhiRegion = 0.7
+        bool useZInVertex = true
+        InputTag VertexProducer = "pixelVertices::"
+    }
+
+    string TTRHBuilder = "WithTrackAngle"
+    PSet OrderedHitsFactoryPSet = {
+        string ComponentName = "StandardHitPairGenerator"
+        string SeedingLayers = "MixedLayerPairs" #"PixelLayerPairs"
+    }
   }
+
   InputTag barrelSuperClusters = correctedHybridSuperClusters
   InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower
-  string SeedAlgo =""
 }

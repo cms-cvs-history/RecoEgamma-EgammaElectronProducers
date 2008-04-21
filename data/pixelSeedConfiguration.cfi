@@ -11,7 +11,8 @@ block electronPixelSeedConfiguration = {
         double rMaxI    =  0.2   # intermediate region SC in EB and 2nd hits in PXF
 
         bool dynamicPhiRoad = true
-        bool fromTrackerSeeds = false
+        bool fromTrackerSeeds = true
+        bool preFilteredSeeds =false
         InputTag initialSeeds = globalMixedSeeds
         bool searchInTIDTEC = true   #  possibility to inhibit extended forward coverage
 	

@@ -1,13 +1,12 @@
 # produce electrons based on matched pixel hits with gsf fit
 #
 
-module globalGsfElectrons = GsfElectronProducer {
+module globalGsfElectrons = GlobalGsfElectronProducer {
 
-  string ElectronType              = "GlobalGsfElectron"
   InputTag tracks = pixelMatchGsfFitForGlobalGsfElectrons
-  InputTag hcalrecHits = hbhereco
-  InputTag barrelSuperClusters = correctedHybridSuperClusters:electronPixelSeeds
-  InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower:electronPixelSeeds
+  InputTag hcalRecHits = hbhereco
+  InputTag barrelSuperClusters = correctedHybridSuperClusters
+  InputTag endcapSuperClusters = correctedIslandEndcapSuperClusters
 
   # nested parameter set for TransientInitialStateEstimator
   PSet TransientInitialStateEstimatorParameters = {
@@ -28,5 +27,6 @@ module globalGsfElectrons = GsfElectronProducer {
   bool highPtPreselection = false   
   double highPtMin        = 150.
   bool applyEtaCorrection = true  
+  bool applyAmbResolution = false
 }
 
