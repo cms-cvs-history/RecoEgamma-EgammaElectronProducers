@@ -26,7 +26,7 @@ module globalGsfElectrons = GlobalGsfElectronProducer {
   double EtCut            = 0.    # in Gev
   bool highPtPreselection = false   
   double highPtMin        = 150.
-  bool applyEtaCorrection = true  
+  bool applyEtaCorrection = false  
   bool applyAmbResolution = false
 }
 
