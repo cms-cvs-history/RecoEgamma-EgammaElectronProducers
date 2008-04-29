@@ -8,7 +8,9 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   InputTag tracks = pixelMatchGsfFit
   InputTag barrelSuperClusters = correctedHybridSuperClusters:electronPixelSeeds
 #  InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower:electronPixelSeeds
- InputTag endcapSuperClusters = correctedFixedMatrixSuperClustersWithPreshower:electronPixelSeeds
+  InputTag endcapSuperClusters = correctedFixedMatrixSuperClustersWithPreshower:electronPixelSeeds
+  InputTag barrelClusterShapes = hybridSuperClusters:hybridShapeAssoc
+  InputTag endcapClusterShapes = islandBasicClusters:islandEndcapShapeAssoc
 
   # electron preselection parameters
   double maxEOverPBarrel = 10000.
@@ -21,7 +23,6 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   double highPtMin = 150.
 
   bool applyEtaCorrection = false
-  bool applyAmbResolution = true
 
   # nested parameter set for TransientInitialStateEstimator
   #FIXME!
