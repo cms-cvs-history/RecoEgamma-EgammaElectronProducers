@@ -1,6 +1,6 @@
 #
 # module to produce pixel seeds for electrons from super clusters
-# $Id: electronPixelSeeds.cfi,v 1.17 2008/04/28 17:34:24 uberthon Exp $
+# $Id: electronPixelSeeds.cfi,v 1.20 2008/04/29 14:39:44 uberthon Exp $
 # Author:  Ursula Berthon, Claude Charlot
 #
 include "RecoEgamma/EgammaElectronProducers/data/pixelSeedConfiguration.cfi"
@@ -28,5 +28,5 @@ module electronPixelSeeds= ElectronPixelSeedProducer {
 
   InputTag barrelSuperClusters = correctedHybridSuperClusters
 #  InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower
-  InputTag endcapSuperClusters = correctedFixedMatrixSuperClustersWithPreshower
+  InputTag endcapSuperClusters = multi5x5SuperClustersWithPreshower
 }

@@ -6,7 +6,8 @@ module globalGsfElectrons = GlobalGsfElectronProducer {
   InputTag tracks = pixelMatchGsfFitForGlobalGsfElectrons
   InputTag hcalRecHits = hbhereco
   InputTag barrelSuperClusters = correctedHybridSuperClusters
-  InputTag endcapSuperClusters = correctedIslandEndcapSuperClusters
+#  InputTag endcapSuperClusters = correctedIslandEndcapSuperClusters
+  InputTag endcapSuperClusters = multi5x5SuperClustersWithPreshower
 
   # nested parameter set for TransientInitialStateEstimator
   PSet TransientInitialStateEstimatorParameters = {
