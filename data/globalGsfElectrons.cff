@@ -1,6 +1,0 @@
-include "Geometry/CaloEventSetup/data/CaloGeometry.cff"
-
-# gsfElectrons
-include "RecoEgamma/EgammaElectronProducers/data/globalGsfElectrons.cfi"
-
-

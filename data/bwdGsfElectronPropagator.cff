@@ -1,5 +1,0 @@
-
-# "backward" propagator for electrons
-es_module bwdGsfElectronPropagator = OppositeMaterialPropagator from "TrackingTools/MaterialEffects/data/OppositeMaterialPropagator.cfi"
-replace bwdGsfElectronPropagator.Mass = 0.000511
-replace bwdGsfElectronPropagator.ComponentName = "bwdGsfElectronPropagator"
