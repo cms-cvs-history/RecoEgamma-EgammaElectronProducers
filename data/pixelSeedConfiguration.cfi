@@ -32,6 +32,6 @@ block electronPixelSeedConfiguration = {
 
 # for filtering
        InputTag hcalRecHits = hbhereco
-       double maxHOverE = 0.1
-       double SCEtCut = 4.
+       double maxHOverE = 0.2
+       double SCEtCut = 5.
 }
