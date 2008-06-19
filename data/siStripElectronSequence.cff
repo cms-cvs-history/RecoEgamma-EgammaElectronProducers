@@ -1,5 +1,5 @@
 #
-# $Id: $
+# $Id: siStripElectronSequence.cff,v 1.1 2006/08/04 19:45:12 rahatlou Exp $
 #
 # complete sequence to 1) make siStripElectrons
 #                      2) do tracking based on these siStripElectrons
@@ -19,7 +19,6 @@ include "Geometry/TrackerNumberingBuilder/data/trackerNumberingGeometry.cfi"
 include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
 
 # magnetic field
-include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 
 include "RecoLocalTracker/SiStripRecHitConverter/data/StripCPEfromTrackAngle.cfi"
 include "RecoLocalTracker/SiPixelRecHits/data/PixelCPEParmError.cfi"
