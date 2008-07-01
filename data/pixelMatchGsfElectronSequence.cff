@@ -1,4 +1,4 @@
-# $Id: pixelMatchGsfElectronSequence.cff,v 1.13 2008/03/21 17:36:03 charlot Exp $
+# $Id: pixelMatchGsfElectronSequence.cff,v 1.15 2008/04/08 16:38:53 uberthon Exp $
 # create a sequence with all required modules and sources needed to make
 # Gsf electron sequence
 #
@@ -16,7 +16,6 @@ include "RecoEgamma/EgammaElectronProducers/data/gsfElectronGsfFit.cff"
 include "RecoEgamma/EgammaElectronProducers/data/pixelMatchGsfElectrons.cff"
 
 sequence pixelMatchGsfElectronSequence = {
-                                        globalMixedSeeds,  # FIXME
                                         electronPixelSeeds,
                                         egammaCkfTrackCandidates,
                                         pixelMatchGsfFit,
