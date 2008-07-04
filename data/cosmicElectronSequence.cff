@@ -1,0 +1,11 @@
+include "RecoEgamma/EgammaElectronProducers/data/electronSequence.cff"
+
+replace electronPixelSeeds.barrelSuperClusters = cosmicSuperClusters:CosmicBarrelSuperClusters
+replace electronPixelSeeds.endcapSuperClusters = cosmicSuperClusters:CosmicEndcapSuperClusters
+
+replace pixelMatchGsfElectrons.barrelSuperClusters = cosmicSuperClusters:CosmicBarrelSuperClusters
+replace pixelMatchGsfElectrons.endcapSuperClusters = cosmicSuperClusters:CosmicEndcapSuperClusters
+replace pixelMatchGsfElectrons.barrelClusterShapes = cosmicBasicClusters:CosmicBarrelShapeAssoc
+replace pixelMatchGsfElectrons.endcapClusterShapes = cosmicBasicClusters:CosmicEndcapShapeAssoc
+
+sequence cosmicElectronSequence = { electronSequence }
