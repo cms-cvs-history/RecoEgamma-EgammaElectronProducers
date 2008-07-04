@@ -7,7 +7,8 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   InputTag hcalRecHits = hbhereco
   InputTag tracks = pixelMatchGsfFit
   InputTag barrelSuperClusters = correctedHybridSuperClusters:electronPixelSeeds
-  InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower:electronPixelSeeds
+#  InputTag endcapSuperClusters = correctedEndcapSuperClustersWithPreshower:electronPixelSeeds
+  InputTag endcapSuperClusters = correctedFixedMatrixSuperClustersWithPreshower:electronPixelSeeds
   InputTag barrelClusterShapes = hybridSuperClusters:hybridShapeAssoc
   InputTag endcapClusterShapes = islandBasicClusters:islandEndcapShapeAssoc
 
