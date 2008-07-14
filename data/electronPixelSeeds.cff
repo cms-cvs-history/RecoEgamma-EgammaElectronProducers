@@ -13,18 +13,8 @@ include "RecoTracker/TkNavigation/data/NavigationSchoolESProducer.cff"
 include "RecoTracker/MeasurementDet/data/MeasurementTrackerESProducer.cfi"
 include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
-# module to make track seeds
-#include "RecoTracker/TkSeedGenerator/data/GlobalMixedSeeds.cff"
-#include "RecoTracker/Configuration/data/RecoTracker.cff"
-include "RecoTracker/TkSeedGenerator/data/GlobalCombinedSeeds.cff"
-include "RecoTracker/TkSeedGenerator/data/GlobalSeedsFromPairsWithVertices.cff" 
-include "RecoTracker/TkSeedGenerator/data/GlobalSeedsFromTripletsWithVertices.cff"
-module newSeedFromPairs = globalSeedsFromPairsWithVertices from "RecoTracker/TkSeedGenerator/data/GlobalSeedsFromPairsWithVertices.cfi"
-replace newSeedFromPairs.RegionFactoryPSet.RegionPSet.ptMin = 0.9  
-module newSeedFromTriplets = globalSeedsFromTripletsWithVertices from "RecoTracker/TkSeedGenerator/data/GlobalSeedsFromTripletsWithVertices.cfi"   #replace newSeedFromTriplets.RegionFactoryPSet.RegionPSet.ptMin = 0.5
-module newCombinedSeeds = globalCombinedSeeds from "RecoTracker/TkSeedGenerator/data/GlobalCombinedSeeds.cfi"
-replace newCombinedSeeds.PairCollection = "newSeedFromPairs"
-replace newCombinedSeeds.TripletCollection = "newSeedFromTriplets"  
+# to make standard track seeds
+include "RecoTracker/Configuration/data/RecoTracker.cff"
 
 # seed module 
 include "RecoEgamma/EgammaElectronProducers/data/electronPixelSeeds.cfi"
