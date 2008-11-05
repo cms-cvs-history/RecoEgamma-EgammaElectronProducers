@@ -4,7 +4,6 @@ process = cms.Process("electrons")
 process.load("Configuration.StandardSequences.Geometry_cff")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.load("Configuration.StandardSequences.MagneticField_cff")
-process.load("RecoEcal.Configuration.RecoEcal_cff")
 process.load("RecoEgamma.EgammaElectronProducers.pixelMatchGsfElectronSequence_cff")
 process.load("RecoLocalTracker.SiPixelRecHits.SiPixelRecHits_cfi")
 process.load("RecoLocalTracker.SiStripRecHitConverter.SiStripRecHitConverter_cfi")
@@ -39,7 +38,7 @@ process.out = cms.OutputModule("PoolOutputModule",
     fileName = cms.untracked.string('electrons.root')
 )
 
-process.p = cms.Path(process.siPixelRecHits*process.siStripMatchedRecHits*process.newSeedFromPairs*process.newSeedFromTriplets*process.newCombinedSeeds*process.ecalClusters*process.electronPixelSeeds)
+process.p = cms.Path(process.siPixelRecHits*process.siStripMatchedRecHits*process.newSeedFromPairs*process.newSeedFromTriplets*process.newCombinedSeeds*process.electronPixelSeeds)
 process.outpath = cms.EndPath(process.out)
 process.GlobalTag.globaltag = 'IDEAL_V9::All'
 
