@@ -16,8 +16,6 @@ module pixelMatchGsfElectrons = GsfElectronProducer {
   double minEOverPEndcaps = 0.0
   double maxDeltaEta = 0.02
   double maxDeltaPhi = 0.1
-  bool highPtPreselection = false   
-  double highPtMin = 150.
 
   bool applyEtaCorrection = false
   bool applyAmbResolution = true
