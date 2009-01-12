@@ -39,7 +39,7 @@ process.out = cms.OutputModule("PoolOutputModule",
     fileName = cms.untracked.string('electrons.root')
 )
 
-process.p = cms.Path(process.siPixelRecHits*process.siStripMatchedRecHits*process.newSeedFromPairs*process.newSeedFromTriplets*process.newCombinedSeeds*process.electronPixelSeeds)
+process.p = cms.Path(process.siPixelRecHits*process.siStripMatchedRecHits*process.newSeedFromPairs*process.newSeedFromTriplets*process.newCombinedSeeds*process.ecalDrivenElectronSeeds)
 process.outpath = cms.EndPath(process.out)
 process.GlobalTag.globaltag = 'IDEAL_V9::All'
 
