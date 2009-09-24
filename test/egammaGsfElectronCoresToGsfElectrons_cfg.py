@@ -1,5 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 import os
+import dbs_discovery
 
 from TrackingTools.Configuration.TrackingTools_cff import *
 
@@ -19,12 +20,11 @@ process.load("Configuration.EventContent.EventContent_cff")
 process.source = cms.Source("PoolSource",
     debugVerbosity = cms.untracked.uint32(1),
     debugFlag = cms.untracked.bool(True),
-    fileNames = cms.untracked.vstring('file:'+os.environ['TEST_RAW_FILE'])
+    fileNames = cms.untracked.vstring()
 )
 
-process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10)
-)
+process.source.fileNames.extend(dbs_discovery.search())
+process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(10))
 
 process.out = cms.OutputModule("PoolOutputModule",
     outputCommands = cms.untracked.vstring('drop *', 
@@ -38,7 +38,7 @@ process.out = cms.OutputModule("PoolOutputModule",
 process.p = cms.Path(process.gsfElectrons)
 
 process.outpath = cms.EndPath(process.out)
-process.GlobalTag.globaltag = 'MC_31X_V2::All'
+process.GlobalTag.globaltag = os.environ['TEST_GLOBAL_TAG']+'::All'
 
 
 
