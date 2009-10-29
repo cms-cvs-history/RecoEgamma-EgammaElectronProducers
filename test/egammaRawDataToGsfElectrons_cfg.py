@@ -43,7 +43,7 @@ process.myelectrontracking = cms.Sequence(process.electronCkfTrackCandidates*pro
 process.p = cms.Path(process.RawToDigi*process.mylocalreco*process.myglobalreco*process.myelectronseeding*process.myelectrontracking*process.particleFlowReco*process.pfElectronTranslator*process.gsfElectronSequence)
 
 process.outpath = cms.EndPath(process.out)
-process.GlobalTag.globaltag = 'MC_31X_V1::All'
+process.GlobalTag.globaltag = os.environ['TEST_GLOBAL_TAG']+'::All'
 
 
 
