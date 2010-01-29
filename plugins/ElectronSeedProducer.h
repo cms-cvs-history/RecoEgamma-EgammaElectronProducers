@@ -36,7 +36,8 @@ class ElectronSeedProducer : public edm::EDProducer
  public:
 
   explicit ElectronSeedProducer(const edm::ParameterSet& conf);
-
+  virtual void beginRun( edm::Run &, edm::EventSetup const & ) ;
+  virtual void endRun( edm::Run &, edm::EventSetup const & ) ;
   virtual ~ElectronSeedProducer();
 
   virtual void produce(edm::Event& e, const edm::EventSetup& c);
@@ -50,7 +51,7 @@ class ElectronSeedProducer : public edm::EDProducer
   edm::InputTag superClusters_[2] ;
   edm::InputTag initialSeeds_ ;
 
-  //const edm::ParameterSet conf_;
+  edm::ParameterSet conf_;
   //ElectronHcalHelper * hcalHelper_ ;
   ElectronSeedGenerator * matcher_ ;
   SeedFilter * seedFilter_;

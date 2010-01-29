@@ -13,7 +13,7 @@
 //
 // Original Author:  Ursula Berthon, Claude Charlot
 //         Created:  Mon Mar 27 13:22:06 CEST 2006
-// $Id: ElectronSeedProducer.cc,v 1.6 2009/05/18 16:50:18 chamont Exp $
+// $Id: ElectronSeedProducer.cc,v 1.7 2009/05/20 13:57:31 chamont Exp $
 //
 //
 
@@ -53,24 +53,22 @@ ElectronSeedProducer::ElectronSeedProducer( const edm::ParameterSet& iConfig )
    //doubleConeSel_(0),
    mhbhe_(0)
  {
-  edm::ParameterSet pset = iConfig.getParameter<edm::ParameterSet>("SeedConfiguration") ;
+  conf_ = iConfig.getParameter<edm::ParameterSet>("SeedConfiguration") ;
 
-  initialSeeds_ = pset.getParameter<edm::InputTag>("initialSeeds") ;
-  SCEtCut_ = pset.getParameter<double>("SCEtCut") ;
-  fromTrackerSeeds_ = pset.getParameter<bool>("fromTrackerSeeds") ;
-  prefilteredSeeds_ = pset.getParameter<bool>("preFilteredSeeds") ;
+  initialSeeds_ = conf_.getParameter<edm::InputTag>("initialSeeds") ;
+  SCEtCut_ = conf_.getParameter<double>("SCEtCut") ;
+  fromTrackerSeeds_ = conf_.getParameter<bool>("fromTrackerSeeds") ;
+  prefilteredSeeds_ = conf_.getParameter<bool>("preFilteredSeeds") ;
 
   // for H/E
-  hcalRecHits_ = pset.getParameter<edm::InputTag>("hcalRecHits") ;
-  maxHOverE_=pset.getParameter<double>("maxHOverE") ;
-  hOverEConeSize_=pset.getParameter<double>("hOverEConeSize") ;
-  hOverEHBMinE_=pset.getParameter<double>("hOverEHBMinE") ;
-  hOverEHFMinE_=pset.getParameter<double>("hOverEHFMinE") ;
+  hcalRecHits_ = conf_.getParameter<edm::InputTag>("hcalRecHits") ;
+  maxHOverE_=conf_.getParameter<double>("maxHOverE") ;
+  hOverEConeSize_=conf_.getParameter<double>("hOverEConeSize") ;
+  hOverEHBMinE_=conf_.getParameter<double>("hOverEHBMinE") ;
+  hOverEHFMinE_=conf_.getParameter<double>("hOverEHFMinE") ;
 
-  matcher_ = new ElectronSeedGenerator(pset) ;
-  //hcalHelper_ = new ElectronHcalHelper(pset) ;
-
-  if (prefilteredSeeds_) seedFilter_ = new SeedFilter(pset) ;
+  matcher_ = new ElectronSeedGenerator(conf_) ;
+  //hcalHelper_ = new ElectronHcalHelper(conf_) ;
 
   //  get collections from config'
   superClusters_[0]=iConfig.getParameter<edm::InputTag>("barrelSuperClusters") ;
@@ -81,11 +79,24 @@ ElectronSeedProducer::ElectronSeedProducer( const edm::ParameterSet& iConfig )
 }
 
 
+void ElectronSeedProducer::beginRun(edm::Run&, edm::EventSetup const&)
+ {
+  // FIXME: because of a bug presumably in tracker seeding,
+  // perhaps in CombinedHitPairGenerator, badly caching some EventSetup product,
+  // we must redo the SeedFilter for each run.
+  if (prefilteredSeeds_) seedFilter_ = new SeedFilter(conf_) ;
+ }
+
+void ElectronSeedProducer::endRun(edm::Run&, edm::EventSetup const&)
+ {
+  delete seedFilter_ ;
+  seedFilter_ = 0 ;
+ }
+
 ElectronSeedProducer::~ElectronSeedProducer()
  {
   //delete hcalHelper_ ;
   delete matcher_ ;
-  delete seedFilter_ ;
   delete mhbhe_ ;
   //delete doubleConeSel_ ;
   delete hcalIso_ ;
