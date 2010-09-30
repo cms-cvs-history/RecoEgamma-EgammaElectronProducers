@@ -13,7 +13,7 @@
 //
 // Original Author:  Ursula Berthon, Claude Charlot
 //         Created:  Mon Mar 27 13:22:06 CEST 2006
-// $Id: GsfElectronProducer.cc,v 1.26 2010/01/15 13:01:00 chamont Exp $
+// $Id: GsfElectronProducer.cc,v 1.27 2010/03/26 11:45:10 chamont Exp $
 //
 //
 
@@ -115,7 +115,8 @@ GsfElectronProducer::GsfElectronProducer( const edm::ParameterSet& iConfig )
         iConfig.getParameter<int>("severityLevelCut"),
         iConfig.getParameter<double>("severityRecHitThreshold"),
         iConfig.getParameter<double>("spikeIdThreshold"),
-        iConfig.getParameter<std::string>("spikeIdString")
+        iConfig.getParameter<std::string>("spikeIdString"),
+        iConfig.getParameter<std::vector<int> >("recHitFlagsToBeExcluded")
 		    );
 
 }
